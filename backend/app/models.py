@@ -19,6 +19,7 @@ class Stablecoin(Base):
     contract_address = Column(String, nullable=False)
     chain_id = Column(Integer, ForeignKey("chains.id"), nullable=False)
     chain = relationship("Chain", back_populates="stablecoins")
+    metrics = relationship("AggregatedMetrics", back_populates="stablecoin")
 
 
 class Chain(Base):
@@ -37,7 +38,19 @@ class AggregatedMetrics(Base):
 
     id = Column(Integer, primary_key=True)
     stablecoin_id = Column(Integer, ForeignKey("stablecoins.id"), nullable=False)
+    chain_id = Column(Integer, ForeignKey("chains.id"), nullable=False)
     timestamp = Column(DateTime, nullable=False)
-    total_transfer_volume = Column(Float, nullable=False)
-    transfer_count = Column(Integer, nullable=False)
+
+    # Transfer metrics
+    total_transfer_volume = Column(Float, nullable=True)
+    transfer_count = Column(Integer, nullable=True)
+
+    # Supply metrics
+    circulating_supply = Column(Float, nullable=True)
+    supply_change_24h = Column(Float, nullable=True)
+    supply_change_7d = Column(Float, nullable=True)
+    supply_change_30d = Column(Float, nullable=True)
+
     created_at = Column(DateTime, default=datetime.utcnow)
+    stablecoin = relationship("Stablecoin", back_populates="metrics")
+    chain = relationship("Chain")

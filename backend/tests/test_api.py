@@ -42,23 +42,29 @@ def test_chain(db: Session):
 
 @pytest.fixture
 def test_stablecoin(db: Session, test_chain: Chain):
-    """Create a test stablecoin."""
-    stablecoin = Stablecoin(
-        symbol="USDC",
-        name="USD Coin",
-        decimals=6,
-        contract_address="0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
-        chain_id=test_chain.id,
-    )
-    db.add(stablecoin)
-    db.commit()
-    db.refresh(stablecoin)
+    """Get or create a test stablecoin."""
+    stablecoin = db.query(Stablecoin).filter_by(symbol="USDC").first()
+    if not stablecoin:
+        stablecoin = Stablecoin(
+            symbol="USDC",
+            name="USD Coin",
+            decimals=6,
+            contract_address="0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
+            chain_id=test_chain.id,
+        )
+        db.add(stablecoin)
+        db.commit()
+        db.refresh(stablecoin)
     return stablecoin
 
 
 @pytest.fixture
 def test_metrics(db: Session, test_stablecoin: Stablecoin):
     """Create test metrics."""
+    # First, delete any existing metrics for this stablecoin
+    db.query(AggregatedMetrics).filter_by(stablecoin_id=test_stablecoin.id).delete()
+    db.commit()
+
     metrics = []
     for i in range(3):
         metric = AggregatedMetrics(
@@ -114,8 +120,12 @@ def test_get_metrics_with_time_range(client: TestClient, test_metrics):
     assert len(data) == 2  # Only metrics within the last 2 hours
 
 
-def test_get_metrics_empty_result(client: TestClient):
+def test_get_metrics_empty_result(client: TestClient, db: Session):
     """Test getting metrics when no data exists."""
+    # Clean up any existing data
+    db.query(AggregatedMetrics).delete()
+    db.commit()
+
     response = client.get("/api/metrics")
     assert response.status_code == 200
     data = response.json()
