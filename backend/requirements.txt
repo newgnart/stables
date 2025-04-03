@@ -1,13 +1,10 @@
 fastapi==0.109.2
 uvicorn==0.27.1
-pytest==8.0.2
-httpx==0.27.0  # For testing FastAPI applications
-python-dotenv==1.0.1  # For environment variable management
-sqlalchemy==2.0.27  # Database ORM
-alembic==1.13.1  # Database migrations
-psycopg2-binary==2.9.9  # PostgreSQL adapter
-web3==6.15.1
-requests==2.31.0
-eth-typing==3.5.2
-apscheduler==3.10.4
+sqlalchemy==2.0.27
+psycopg2-binary==2.9.9
+alembic==1.13.1
+python-dotenv==1.0.1
+httpx==0.26.0
+pydantic==2.6.1
+python-dateutil==2.8.2
 

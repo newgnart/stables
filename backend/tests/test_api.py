@@ -85,7 +85,7 @@ def test_get_metrics_no_filters(client: TestClient, test_metrics):
     assert response.status_code == 200
     data = response.json()
     assert len(data) == len(test_metrics)
-    assert all(metric["stablecoin_symbol"] == "USDC" for metric in data)
+    assert all(metric["symbol"] == "USDC" for metric in data)
 
 
 def test_get_metrics_with_stablecoin_filter(client: TestClient, test_metrics):
@@ -94,7 +94,7 @@ def test_get_metrics_with_stablecoin_filter(client: TestClient, test_metrics):
     assert response.status_code == 200
     data = response.json()
     assert len(data) == len(test_metrics)
-    assert all(metric["stablecoin_symbol"] == "USDC" for metric in data)
+    assert all(metric["symbol"] == "USDC" for metric in data)
 
 
 def test_get_metrics_with_chain_filter(client: TestClient, test_metrics):
