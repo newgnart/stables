@@ -5,29 +5,21 @@ import pandas as pd
 from dataclasses import dataclass
 from datetime import datetime
 
+now = datetime.now()
+
 
 @dataclass
-class ChainCirculatingData:
+class LlamaChainCirculatingData:
     """Represents chain-specific circulating data for a stablecoin."""
 
-    datetime: datetime
-    id: str  # stablecoin id
+    stable_id: str
     chain: str
     circulating: float
 
 
 @dataclass
-class StablecoinData:
-    """Represents a stablecoin's complete data.
-    "id": "1",
-    "name": "Tether",
-    "symbol": "USDT",
-    "gecko_id": "tether",
-    "pegType": "peggedUSD",
-    "priceSource": "defillama",
-    "pegMechanism": "fiat-backed",
-    "circulating": { "peggedUSD": 144714050088.3748 },
-    """
+class LlamaStableData:
+    """Represents a stablecoin's complete data."""
 
     id: str
     name: str
@@ -35,26 +27,29 @@ class StablecoinData:
     gecko_id: str
     peg_type: str
     peg_mechanism: str
-    circulating: Dict[str, float]
-    # chain_circulating: Dict[str, ChainCirculatingData]
+    total_circulating: float
 
 
-class DeFiLlamaTransformer:
+class LlamaStableTransformer:
     """Transforms raw DeFiLlama data into structured formats."""
 
     @staticmethod
-    def to_stablecoin_df(raw_data: List[Dict]) -> pd.DataFrame:
+    def to_stable_df(raw_data: List[Dict]) -> pd.DataFrame:
         """Convert raw API response to list of StablecoinData objects."""
         records = []
         for item in raw_data:
-            stablecoin = StablecoinData(
+            # Skip stablecoins without a gecko_id
+            if not item.get("gecko_id"):
+                continue
+
+            stablecoin = LlamaStableData(
                 id=item["id"],
                 name=item["name"],
                 symbol=item["symbol"],
                 gecko_id=item["gecko_id"],
                 peg_type=item["pegType"],
                 peg_mechanism=item["pegMechanism"],
-                circulating=item["circulating"][item["pegType"]],
+                total_circulating=item["circulating"][item["pegType"]],
             )
             records.append(stablecoin)
         return pd.DataFrame(records)
@@ -64,16 +59,17 @@ class DeFiLlamaTransformer:
         """Convert stablecoin data to chain distribution DataFrame."""
         records = []
         for item in raw_data:
-            id = item.get("id")
+            # Skip stablecoins without a gecko_id to maintain consistency
+            if not item.get("gecko_id"):
+                continue
+
             peg_type = item.get("pegType")
             chain_circulating = item.get("chainCirculating", {})
             for chain, chain_data in chain_circulating.items():
-                records.append(
-                    {
-                        "datetime": datetime.now(),
-                        "id": id,
-                        "chain": chain,
-                        "circulating": chain_data.get("current").get(peg_type),
-                    }
+                chain_circulating = LlamaChainCirculatingData(
+                    stable_id=item["id"],
+                    chain=chain,
+                    circulating=chain_data.get("current").get(peg_type),
                 )
+                records.append(chain_circulating)
         return pd.DataFrame(records)

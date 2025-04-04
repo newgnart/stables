@@ -62,13 +62,13 @@ def test_stablecoin(db: Session, test_chain: Chain):
 def test_metrics(db: Session, test_stablecoin: Stablecoin):
     """Create test metrics."""
     # First, delete any existing metrics for this stablecoin
-    db.query(AggregatedMetrics).filter_by(stablecoin_id=test_stablecoin.id).delete()
+    db.query(AggregatedMetrics).filter_by(stable_id=test_stablecoin.id).delete()
     db.commit()
 
     metrics = []
     for i in range(3):
         metric = AggregatedMetrics(
-            stablecoin_id=test_stablecoin.id,
+            stable_id=test_stablecoin.id,
             timestamp=datetime.utcnow() - timedelta(hours=i),
             total_transfer_volume=1000.0 * (i + 1),
             transfer_count=100 * (i + 1),

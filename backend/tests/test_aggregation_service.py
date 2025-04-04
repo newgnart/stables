@@ -86,7 +86,7 @@ def test_update_existing_metrics(
     # Setup
     mock_db.query.return_value.all.return_value = [mock_stablecoin]
     existing_metrics = AggregatedMetrics(
-        stablecoin_id=mock_stablecoin.id,
+        stable_id=mock_stablecoin.id,
         timestamp=datetime.utcnow() - timedelta(hours=1),
         total_transfer_volume=Decimal("0"),
         transfer_count=0,

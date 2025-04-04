@@ -2,8 +2,8 @@
 
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
-from data.database import get_db
-from data.models import Circulating
+from core.database import get_db
+from core.models import Circulating
 from config.settings import API_PREFIX, API_VERSION, API_TITLE, API_DESCRIPTION
 from config.logging import setup_logging
 

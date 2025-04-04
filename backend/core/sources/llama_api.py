@@ -9,7 +9,7 @@ from config.logging import setup_logging
 logger = setup_logging()
 
 
-class DeFiLlamaStablecoinsClient:
+class LlamaStableAPI:
     """Client for interacting with the DeFiLlama Stablecoins API."""
 
     def __init__(self):
