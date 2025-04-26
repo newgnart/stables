@@ -1,6 +1,6 @@
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from core.database import engine
+from stables.core.database import engine
 
 
 def drop_database():
