@@ -1,15 +1,11 @@
-[tool.poetry]
-name = "stablecoins"
+[project]
+name = "stables"
 version = "0.1.0"
-description = ""
-authors = ["trangnv <nvtrang91@gmail.com>"]
+description = "Add your description here"
 readme = "README.md"
-packages = [{ include = "stables", from = "src" }]
-
-[tool.poetry.dependencies]
-python = "^3.11"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.11"
+dependencies = [
+    "plotly>=6.0.1",
+    "streamlit>=1.44.1",
+    "watchdog>=6.0.0",
+]
