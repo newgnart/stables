@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+For anything that is related to dune analytic sql, consult the Dune documentation
+alway use UPPERCASE for keywords for SQL query
