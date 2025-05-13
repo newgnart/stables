@@ -1,4 +1,4 @@
-import streamlit as st
+import dashboard as st
 import os
 import sys
 import plotly.express as px

@@ -1,120 +1,104 @@
-# Stablecoin Supply API
+# Stablecoin Analytics Dashboard
 
-A FastAPI-based service for collecting and serving stablecoin circulating supply data from DeFiLlama.
+A comprehensive dashboard for analyzing stablecoin data from DeFiLlama, providing insights into market share, chain distribution, and growth metrics.
 
 ## Features
 
-- Collects stablecoin supply data from DeFiLlama
-- Stores data in PostgreSQL database with UTC timestamps
-- Provides REST API endpoints for accessing the data
-- Supports filtering by stablecoin symbol and chain
-- Tracks supply changes over 24h, 7d, and 30d periods
+- Real-time data collection from DeFiLlama API
+- Market share analysis and visualization
+- Chain distribution metrics
+- Growth rate analysis
+- Historical trend visualization
+- Interactive Streamlit dashboard
+
+## Project Structure
+
+```
+stablecoin-analytics-dashboard/
+├── .env                    # Store API keys (add to .gitignore)
+├── .gitignore              # Ignore env files and large datasets
+├── README.md               # Project documentation
+├── requirements.txt        # Dependencies
+├── data/
+│   ├── raw/                # Raw data from APIs
+│   │   ├── blockchain/     # On-chain data
+│   │   ├── market/         # Price and market cap data
+│   │   └── defi/           # DeFi protocol integration data
+│   └── processed/          # Cleaned and transformed data
+├── notebooks/              # Jupyter notebooks for exploration
+├── src/
+│   ├── data/               # Data collection scripts
+│   │   ├── blockchain.py   # On-chain data collection
+│   │   ├── market_data.py  # Price and market data
+│   │   └── defi_data.py    # Protocol integration data
+│   ├── processing/         # Data transformation
+│   │   └── transformations.py
+│   ├── analysis/           # Analysis and metrics
+│   │   └── basic_metrics.py
+│   └── visualization/      # Visualization components
+│       └── components.py
+└── dashboard/             # Streamlit dashboard app
+    └── app.py             # Main dashboard
+```
 
 ## Setup
 
-### 1. Prerequisites
-
-- Python 3.8 or higher
-- PostgreSQL 12 or higher
-- `psql` command-line tool
-
-### 2. Database Setup
-
+1. Clone the repository:
 ```bash
-# Create PostgreSQL database
-createdb stables
+git clone <repository-url>
+cd stablecoin-analytics-dashboard
 ```
 
-### 3. Python Environment
-
+2. Create and activate a virtual environment:
 ```bash
-# Create virtual environment
 python -m venv venv
-
-# Activate virtual environment
 source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-# Install dependencies
+3. Install dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
-### 4. Environment Configuration
-
-Create a `.env` file in the backend directory:
-```bash
-# Default configuration
-DATABASE_URL=postgresql://postgres:postgres@localhost:5432/stables
+4. Create a `.env` file in the root directory and add any required API keys:
+```
+DEFILLAMA_API_KEY=your_api_key_here
 ```
 
-### 5. Database Migration
+## Usage
 
+1. Start the Streamlit dashboard:
 ```bash
-# Initialize database schema
-alembic upgrade head
+streamlit run dashboard/app.py
 ```
 
-### 6. Start the Server
+2. Open your browser and navigate to `http://localhost:8501`
 
-```bash
-# Development mode with auto-reload
-uvicorn app.main:app --reload
+3. Click the "Refresh Data" button to fetch the latest data from DeFiLlama
 
-# Production mode
-uvicorn app.main:app --host 0.0.0.0 --port 8000
-```
+## Data Collection
 
-## Database Schema
+The dashboard collects data from the following sources:
+- DeFiLlama API for stablecoin data
+- Historical data for trend analysis
+- Chain-specific circulating supply data
 
-### Stablecoin Table
-- `id`: Primary key (from DeFiLlama)
-- `name`: Stablecoin name
-- `symbol`: Token symbol (indexed)
-- `gecko_id`: CoinGecko ID (indexed)
-- `peg_type`: Type of peg (e.g., USD, EUR)
-- `peg_mechanism`: Peg mechanism type
-- `total_circulating`: Total supply across all chains
-- `time_utc`: Timestamp with minute precision
+## Analysis Features
 
-### Chain Circulating Table
-- Composite primary key: (`stable_id`, `chain`, `time_utc`)
-- `stable_id`: Foreign key to stablecoin table
-- `chain`: Blockchain name
-- `circulating`: Circulating supply on this chain
-- `time_utc`: Timestamp with minute precision
+- Market share distribution
+- Chain distribution analysis
+- Growth rate metrics
+- Historical trend visualization
+- Raw data tables
 
-## API Endpoints
+## Contributing
 
-- `GET /`: Root endpoint with API information
-- `GET /supply`: Get circulating supply data
-  - Query parameters:
-    - `symbol`: Filter by stablecoin symbol
-    - `chain`: Filter by chain
-    - `limit`: Maximum number of records (default: 100)
-- `POST /collect`: Trigger data collection from DeFiLlama
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-## Development
+## License
 
-### Database Migrations
-
-```bash
-# Create a new migration
-alembic revision --autogenerate -m "description"
-
-# Apply migrations
-alembic upgrade head
-
-# Rollback one version
-alembic downgrade -1
-```
-
-### Code Style
-
-The project follows PEP 8 guidelines. Before committing:
-```bash
-# Install development dependencies
-pip install black isort
-
-# Format code
-black .
-isort .
-``` 
+This project is licensed under the MIT License - see the LICENSE file for details.

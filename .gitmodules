@@ -1,3 +1,0 @@
-[submodule "submodules/curve-stablecoin"]
-	path = submodules/curve-stablecoin
-	url = git@github.com:curvefi/curve-stablecoin.git

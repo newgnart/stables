@@ -1,4 +1,4 @@
-import streamlit as st
+import dashboard as st
 from pathlib import Path
 import sys
 
