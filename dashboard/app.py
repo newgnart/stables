@@ -7,7 +7,7 @@ import asyncio
 import logging
 from datetime import datetime, timedelta
 
-from processing.defillama_service import DeFiLlamaService
+from temp.core.services.defillama_service import DeFiLlamaService
 from src.analysis.basic_metrics import StablecoinMetrics
 from src.visualization.components import StablecoinVisualizations
 
