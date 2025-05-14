@@ -38,7 +38,8 @@ ENV/
 .ipynb_checkpoints
 
 # Data files
-data/data/
+data/raw/
+data/processed/
 
 
 # Logs
