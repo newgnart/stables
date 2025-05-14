@@ -14,22 +14,13 @@ stablecoin-analytics-dashboard/
 ├── requirements.txt        # Dependencies
 ├── data/
 │   ├── raw/                # Raw data from APIs
-│   │   ├── blockchain/     # On-chain data
-│   │   ├── market/         # Price and market cap data
-│   │   └── defi/           # DeFi protocol integration data
 │   └── processed/          # Cleaned and transformed data
 ├── notebooks/              # Jupyter notebooks for exploration
 ├── src/
 │   ├── data/               # Data collection scripts
-│   │   ├── blockchain.py   # On-chain data collection
-│   │   ├── market_data.py  # Price and market data
-│   │   └── defi_data.py    # Protocol integration data
 │   ├── transform/         # Data transformation
-│   │   └── transformations.py
 │   ├── analysis/           # Analysis and metrics
-│   │   └── basic_metrics.py
 │   └── visualization/      # Visualization components
-│       └── components.py
 └── dashboard/             # Streamlit dashboard app
     └── app.py             # Main dashboard
 ```
