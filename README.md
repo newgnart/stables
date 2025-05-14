@@ -7,7 +7,7 @@ Dashboard for analyzing stablecoin data
 ## Project Structure
 
 ```
-stablecoin-analytics-dashboard/
+stables/
 ├── .env                    # Store API keys (add to .gitignore)
 ├── .gitignore              # Ignore env files and large datasets
 ├── README.md               # Project documentation
