@@ -122,6 +122,12 @@ class DeFiLlamaTransformer:
         return df
 
     @staticmethod
+    def yield_pools_to_df(raw_data: List[Dict]) -> pd.DataFrame:
+        """Convert yield pools data to DataFrame."""
+        df = pd.DataFrame(raw_data)
+        return df
+
+    @staticmethod
     def _flatten_nested_dict(
         data_list: List[Dict], separator: str = "_"
     ) -> List[Dict[str, Any]]:

@@ -16,6 +16,7 @@ logger = logging.getLogger(__name__)
 
 # Constants
 DEFILLAMA_STABLECOINS_API_URL = "https://stablecoins.llama.fi"
+DEFILLAMA_YIELDS_API_URL = "https://yields.llama.fi"
 DEFILLAMA_TIMEOUT = 30  # seconds
 
 
@@ -29,13 +30,14 @@ class DeFiLlamaAPI:
         Args:
 
         """
-        self.base_url = DEFILLAMA_STABLECOINS_API_URL
+        self.base_stables_url = DEFILLAMA_STABLECOINS_API_URL
+        self.base_yields_url = DEFILLAMA_YIELDS_API_URL
 
     def fetch_stables(self) -> List[Dict]:
         """Get chain-specific data for all stablecoin."""
 
         try:
-            with requests.get(f"{self.base_url}/stablecoins") as response:
+            with requests.get(f"{self.base_stables_url}/stablecoins") as response:
                 if response.status_code == 200:
                     response = response.json()
                     data = response["peggedAssets"]
@@ -50,7 +52,7 @@ class DeFiLlamaAPI:
     def fetch_stable(self, id: str) -> List[Dict]:
         """Get historical stablecoin data."""
         try:
-            with requests.get(f"{self.base_url}/stablecoin/{id}") as response:
+            with requests.get(f"{self.base_stables_url}/stablecoin/{id}") as response:
                 if response.status_code == 200:
                     response = response.json()
                     return response
@@ -61,4 +63,18 @@ class DeFiLlamaAPI:
                     return []
         except Exception as e:
             logger.error(f"Exception fetching historical stablecoin data: {str(e)}")
+            return []
+
+    def fetch_yield_pools(self) -> List[Dict]:
+        """Get lastest data for all pools"""
+        try:
+            with requests.get(f"{self.base_yields_url}/pools") as response:
+                if response.status_code == 200:
+                    response = response.json()
+                    return response["data"]
+                else:
+                    logger.error(f"Error fetching yield pools {response}")
+                    return []
+        except Exception as e:
+            logger.error(f"Exception fetching yield pools: {str(e)}")
             return []
