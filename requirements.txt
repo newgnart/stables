@@ -25,6 +25,7 @@ httpx==0.28.1
 idna==3.10
 ipykernel==6.29.5
 ipython==9.2.0
+ipython-genutils==0.2.0
 ipython-pygments-lexers==1.1.1
 ipywidgets==8.1.7
 isoduration==20.11.0
@@ -37,15 +38,20 @@ jsonschema-specifications==2025.4.1
 jupyter==1.1.1
 jupyter-client==8.6.3
 jupyter-console==6.6.3
+jupyter-contrib-core==0.4.2
+jupyter-contrib-nbextensions @ git+https://github.com/blaiseli/jupyter_contrib_nbextensions@dd2364f915a32676f8f8437214f9cc0bcc0e53dc
 jupyter-core==5.7.2
 jupyter-events==0.12.0
+jupyter-highlight-selected-word==0.2.0
 jupyter-lsp==2.2.5
+jupyter-nbextensions-configurator==0.6.4
 jupyter-server==2.16.0
 jupyter-server-terminals==0.5.3
 jupyterlab==4.4.2
 jupyterlab-pygments==0.3.0
 jupyterlab-server==2.27.3
 jupyterlab-widgets==3.0.15
+lxml==5.4.0
 markupsafe==3.0.2
 matplotlib-inline==0.1.7
 mistune==3.1.3

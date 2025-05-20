@@ -8,34 +8,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  uv-notebooks:
-    name: python
+  build-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Install uv
-        uses: astral-sh/setup-uv@v5
-        with:
-          version: "0.7.6"
-
-      - name: "Set up Python"
-        uses: actions/setup-python@v5
-        with:
-          python-version-file: ".python-version"
+      - name: Check out repository
+        uses: actions/checkout@v4
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Install dependencies
-        run: |
-          uv sync
-          uv pip install jupyter
-          source .venv/bin/activate
-          python -c "import jupyter; print('Jupyter is installed')"
+      - name: Install Python and Dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+      - run: pip install jupyter
+      - run: pip install -r requirements.txt
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
