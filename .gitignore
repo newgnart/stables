@@ -44,3 +44,5 @@ cook/
 #
 data/raw
 data/processed
+
+_site/
