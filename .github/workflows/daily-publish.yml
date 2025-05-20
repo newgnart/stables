@@ -29,14 +29,6 @@ jobs:
       - name: Install dependencies
         run: uv sync
 
-      - name: Execute notebooks
-        run: |
-          # Execute all notebooks in the notebooks directory
-          for notebook in notebooks/*.ipynb; do
-            filename=$(basename "$notebook")
-            uv run jupyter nbconvert --execute "$notebook" --to notebook --output "$filename"
-          done
-
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:

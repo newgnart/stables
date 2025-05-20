@@ -32,8 +32,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          uv pip install jupyter
           uv sync
+          uv pip install jupyter
           source .venv/bin/activate
           python -c "import jupyter; print('Jupyter is installed')"
 
