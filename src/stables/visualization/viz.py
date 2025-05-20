@@ -20,7 +20,7 @@ class StableVisualizer:
     @staticmethod
     def plot_yields(
         pools_data: Dict[str, pd.DataFrame],
-        title: str = "Pool Yields Over Time",
+        title: str = "Yields",
         days: int = 90,
     ) -> go.Figure:
         """
@@ -60,7 +60,6 @@ class StableVisualizer:
         # Update layout with two y-axes
         fig.update_layout(
             title=title,
-            xaxis_title="Date",
             yaxis=dict(
                 title="APY (%)", side="left", showgrid=True, gridcolor="lightgrey"
             ),
