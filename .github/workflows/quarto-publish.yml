@@ -11,6 +11,8 @@ jobs:
   uv-notebooks:
     name: python
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
@@ -29,7 +31,11 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Install dependencies
-        run: uv sync; source .venv/bin/activate
+        run: |
+          uv pip install jupyter
+          uv sync
+          source .venv/bin/activate
+          python -c "import jupyter; print('Jupyter is installed')"
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
