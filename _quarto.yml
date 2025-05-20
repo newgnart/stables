@@ -3,13 +3,13 @@ project:
   output-dir: _site
 
 website:
-  title: "Stablecoin Research"
+  title: "Stablecoins"
   navbar:
     left:
       - href: index.qmd
         text: Home
-      - href: notebooks/
-        text: Notebooks
+      - href: yield_bearing.html
+        text: YBS
 
 format:
   html:

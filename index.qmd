@@ -1,11 +1,9 @@
 ---
-title: "Stablecoin Research"
+title: "Stablecoins"
 ---
 
 
-## Recent Notebooks
+## Yield Bearing
+Dashboard: [Yield Bearing Stablecoins](yield_bearing.html)
 
-- [View all notebooks](notebooks/)
-
-## About
-
+## Stablecoin Market Share
