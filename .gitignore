@@ -40,3 +40,7 @@ env/
 logs/
 cook/
 /.quarto/
+
+#
+data/raw
+data/processed
