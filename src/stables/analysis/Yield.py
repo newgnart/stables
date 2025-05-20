@@ -1,8 +1,4 @@
-import os
-import sys
-import plotly.express as px
 import pandas as pd
-from stables.visualization.components import plot_stable_chain_data
 
 
 class Yield:
