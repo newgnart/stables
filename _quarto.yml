@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Stablecoin Research"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: notebooks/
+        text: Notebooks
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true 

@@ -1,0 +1,251 @@
+id,name,symbol,gecko_id,peg_type,peg_mechanism,total_circulating
+1,Tether,USDT,tether,peggedUSD,fiat-backed,150459614691.3392
+2,USD Coin,USDC,usd-coin,peggedUSD,fiat-backed,60026774119.44489
+3,TerraClassicUSD,USTC,terrausd,peggedUSD,algorithmic,0.0
+4,Binance USD,BUSD,binance-usd,peggedUSD,fiat-backed,57792684.11594552
+5,Dai,DAI,dai,peggedUSD,crypto-backed,4517354083.516296
+6,Frax,FRAX,frax,peggedUSD,algorithmic,201478928.7519386
+7,TrueUSD,TUSD,true-usd,peggedUSD,fiat-backed,485485718.87
+8,Liquity USD,LUSD,liquity-usd,peggedUSD,crypto-backed,42058965.81084276
+9,Fei USD,FEI,fei-usd,peggedUSD,algorithmic,3566768.6434767935
+10,Magic Internet Money,MIM,magic-internet-money,peggedUSD,crypto-backed,59034668.23028763
+11,Pax Dollar,USDP,paxos-standard,peggedUSD,fiat-backed,70111880.86068343
+12,Neutrino USD,USDN,neutrino,peggedUSD,algorithmic,408891256.953596
+13,YUSD Stablecoin,YUSD,yusd-stablecoin,peggedUSD,crypto-backed,11874724.373324456
+14,USDD,USDD,usdd,peggedUSD,algorithmic,358397406.4408367
+15,Dola,DOLA,dola-usd,peggedUSD,crypto-backed,212812204.63944054
+16,Parrot USD,PAI,parrot-usd,peggedUSD,crypto-backed,4223738.199117
+17,HUSD,HUSD,husd,peggedUSD,fiat-backed,192313547.97963187
+18,Nexus USD,NUSD,nexus-usd,peggedUSD,crypto-backed,3499930.922591595
+19,Gemini Dollar,GUSD,gemini-dollar,peggedUSD,fiat-backed,49342204.44
+20,Alchemix USD,ALUSD,alchemix-usd,peggedUSD,algorithmic,14819602.036853142
+21,flexUSD,FLEXUSD,flex-usd,peggedUSD,crypto-backed,166350245.33174843
+22,sUSD,SUSD,nusd,peggedUSD,crypto-backed,50507354.11405618
+23,Origin Dollar,OUSD,origin-dollar,peggedUSD,crypto-backed,7559968.026206476
+24,Celo Dollar,CUSD,celo-dollar,peggedUSD,algorithmic,23429349.786002498
+25,Reserve,RSV,reserve,peggedUSD,crypto-backed,208773.91774534236
+26,mStable USD,MUSD,musd,peggedUSD,crypto-backed,3311341.577518911
+27,USDK,USDK,usdk,peggedUSD,fiat-backed,488711.0
+28,Vai,VAI,vai,peggedUSD,crypto-backed,2675747.915941836
+29,TOR,TOR,tor,peggedUSD,crypto-backed,17070481.490329992
+30,Dollar on Chain,DOC,doc,peggedUSD,crypto-backed,3377203.8779563997
+31,SpiceUSD,USDS,spiceusd,peggedUSD,algorithmic,18047728.62691072
+32,Sperax USD,USDS,sperax-usd,peggedUSD,crypto-backed,873865.5093960038
+33,USDP Stablecoin,USDP,usdp,peggedUSD,crypto-backed,2638610.6644316986
+34,USD Balance,USDB,usd-balance,peggedUSD,algorithmic,147529.41295504756
+37,USDJ,USDJ,just-stablecoin,peggedUSD,crypto-backed,8775901.199200746
+38,STBL,STBL,algostable,peggedUSD,crypto-backed,199975.563051
+39,VOLT Protocol,VOLT,volt-protocol,peggedVAR,algorithmic,76852.2042627133
+40,Rai Reflex Index,RAI,rai,peggedVAR,crypto-backed,1258369.8484317134
+41,Float Protocol Float,FLOAT,float-protocol-float,peggedVAR,algorithmic,726707.9955812488
+42,USDX,USDX,usdx,peggedUSD,crypto-backed,24885707.0
+43,ZUSD,ZUSD,zusd,peggedUSD,fiat-backed,18644912.585369
+44,dForce USD,USX,token-dforce-usd,peggedUSD,crypto-backed,15328874.928243198
+45,aUSD Seed,aSEED,acala-dollar,peggedUSD,crypto-backed,2714333.295012587
+46,USD+,USD+,usd,peggedUSD,crypto-backed,21304637.95735668
+48,BAI Stablecoin,BAI,bai-stablecoin,peggedUSD,crypto-backed,752371.8359868516
+49,Euro Tether,EURT,tether-eurt,peggedEUR,fiat-backed,25483042.499963
+50,EURC,EURC,euro-coin,peggedEUR,fiat-backed,209050899.485248
+51,Stasis Euro,EURS,stasis-eurs,peggedEUR,fiat-backed,19825855.141856
+52,Celo Euro,CEUR,celo-euro,peggedEUR,algorithmic,3862869.846485793
+53,sEUR,SEUR,seur,peggedEUR,crypto-backed,1003725.5893887752
+54,USN,USN,usn,peggedUSD,algorithmic,38439516.88627533
+55,EURA,EURA,ageur,peggedEUR,crypto-backed,20432815.746494778
+56,Parallel,PAR,par-stablecoin,peggedEUR,crypto-backed,1492247.2999448522
+57,Hedge USD,USH,hedge-usd,peggedUSD,crypto-backed,38710.705108831
+58,3USD,3USD,three-usd,peggedUSD,crypto-backed,580778.4177696254
+59,SigmaUSD,SIGUSD,sigmausd,peggedUSD,algorithmic,326633.9
+60,HomeCoin,HOME,bacon-protocol-home,peggedUSD,crypto-backed,6066832.377963
+61,Fixed Income Asset Token,FIAT,fixed-income-asset-token,peggedUSD,crypto-backed,7606.787149079511
+62,PUSd,PUSD,pusd-2,peggedUSD,crypto-backed,6646.089426107518
+63,Fantom USD,FUSD,fantom-usd,peggedUSD,crypto-backed,18936995.517294995
+64,UXD Stablecoin,UXD,uxd-stablecoin,peggedUSD,algorithmic,341289.702767
+65,USDH,USDH,usdh,peggedUSD,crypto-backed,1727003.104429
+66,Frax Price Index,FPI,frax-price-index,peggedVAR,algorithmic,84992988.26238032
+67,Bean,BEAN,bean,peggedUSD,algorithmic,33410060.190631
+68,USDLemma,USDL,usdlemma,peggedUSD,algorithmic,175115.82098190355
+70,DigitalDollar,DUSD,digitaldollar,peggedUSD,fiat-backed,2952323.89242
+71,Vesta Stable,VST,vesta-stable,peggedUSD,crypto-backed,263398.637963953
+72,Kolibri USD,KUSD,kolibri-usd,peggedUSD,crypto-backed,794987.2351077843
+73,USDtez,USDTZ,usdtez,peggedUSD,fiat-backed,271875.288855
+74,Moremoney USD,MONEY,moremoney-usd,peggedUSD,crypto-backed,31354.187630892193
+75,Youves uUSD,UUSD,youves-uusd,peggedUSD,crypto-backed,11677095.514405858
+76,Interest Protocol,USDI,interest-protocol,peggedUSD,crypto-backed,30857.851506412968
+78,Note,NOTE,note,peggedUSD,crypto-backed,1345234.109915596
+79,Lista USD,LISUSD,helio-protocol-hay,peggedUSD,crypto-backed,64240625.42781715
+81,USK,USK,usk,peggedUSD,crypto-backed,1678530.725368
+82,arUSD,ARUSD,arable-usd,peggedUSD,crypto-backed,78371.86133264427
+83,USDW,USDW,usdw,peggedUSD,crypto-backed,1444851.739022683
+84,BOB,BOB,bob,peggedUSD,crypto-backed,36356.12158443861
+85,Real USD,USDR,real-usd,peggedUSD,algorithmic,44241085.665458694
+87,USDi,USDI,bank-of-chain,peggedUSD,crypto-backed,3743.10702119779
+88,iUSD,IUSD,iusd,peggedUSD,crypto-backed,6108537.015714
+89,XAI,XAI,xai,peggedUSD,crypto-backed,4848250.054296843
+90,Redeemable USD,RUSD,redeemable,peggedUSD,fiat-backed,38701.7195
+91,Iron Bank EURO,IBEUR,iron-bank-euro,peggedEUR,crypto-backed,3000000.0
+92,Meme Dollar,PINA,meme-dollar,peggedUSD,algorithmic,913470.8950252386
+93,Djed StableCoin,DJED,djed,peggedUSD,algorithmic,3492793.8044433594
+94,BaoUSD,BAOUSD,baousd,peggedUSD,crypto-backed,2000067.142794619
+96,Coin98 Dollar,CUSD,coin98-dollar,peggedUSD,crypto-backed,37513.193516351515
+97,USP Stablecoin,USP,platypus-usd,peggedUSD,crypto-backed,65437888.75624278
+98,EUROe Stablecoin,EUROe,euroe-stablecoin,peggedEUR,fiat-backed,338281.58445500006
+99,Stabl.fi Cash,CASH,stabl-fi,peggedUSD,crypto-backed,75001.02709584407
+100,Digital Standard Unit,DSU,digital-standard-unit,peggedUSD,crypto-backed,773583.7264583021
+101,Monerium EUR emoney,EURE,monerium-eur-money,peggedEUR,fiat-backed,23374961.615608674
+102,Offshift anonUSD,ANONUSD,offshift-anonusd,peggedUSD,algorithmic,10802.846730544436
+103,NXUSD,NXUSD,nxusd,peggedUSD,crypto-backed,7301226.838858352
+104,Davos Protocol,DUSD,davos-protocol,peggedUSD,crypto-backed,96276.76423849649
+105,DeFi Franc,DCHF,defi-franc,peggedVAR,crypto-backed,58402.3533928857
+106,Electronic USD,EUSD,electronic-usd,peggedUSD,crypto-backed,22182616.040809613
+107,Czodiac USD,CZUSD,czusd,peggedUSD,crypto-backed,888109.5159460758
+108,Deuterium,d2O,dam-finance,peggedUSD,crypto-backed,11744.138593384518
+109,eUSD,EUSD,eusd-27a558b0-8b5b-4225-a614-63539da936f4,peggedUSD,crypto-backed,156364.0261307526
+110,crvUSD,crvUSD,crvusd,peggedUSD,crypto-backed,169718497.48917472
+111,DAI+,DAI+,overnight-dai,peggedUSD,crypto-backed,28181.106831486803
+112,USDT+,USDT+,usdtplus,peggedUSD,crypto-backed,290012.5933043383
+113,SILK,SILK,silk-bcec1136-561c-4706-a42c-8b67d0d7f7d2,peggedVAR,crypto-backed,1642393.8634357164
+114,CLever USD,clevUSD,clever-usd,peggedUSD,crypto-backed,89447.50029730312
+115,R,R,r,peggedUSD,crypto-backed,10722183.505313257
+116,GRAI,GRAI,grai,peggedUSD,crypto-backed,423407.7185186479
+117,Ethos Reserve Note,ERN,ethos-reserve-note,peggedUSD,crypto-backed,103598.45777874831
+118,GHO,GHO,gho,peggedUSD,crypto-backed,263497929.52729458
+119,First Digital USD,FDUSD,first-digital-usd,peggedUSD,fiat-backed,1249678218.579684
+120,PayPal USD,PYUSD,paypal-usd,peggedUSD,fiat-backed,911962520.863529
+122,GYEN,GYEN,gyen,peggedJPY,fiat-backed,1454264357.983492
+123,STAR,STAR,preon-star,peggedUSD,crypto-backed,261088.90805629763
+124,peg-eUSD,peUSD,peusd,peggedUSD,crypto-backed,1291086.0609947497
+125,eUSD (V2),eUSD(v2),eusd-v2,peggedUSD,crypto-backed,2297537.0428160196
+126,mkUSD,mkUSD,prisma-mkusd,peggedUSD,crypto-backed,305996.58259999345
+127,Alternity CNY,LCNY,alternity-cny,peggedCNY,crypto-backed,37300.0
+128,Nexus,NEX,nexus1,peggedUSD,algorithmic,5176.8864570000005
+129,Ondo US Dollar Yield,USDY,ondo-us-dollar-yield,peggedUSD,fiat-backed,581760300.1498424
+130,Savvy USD,SVUSD,savvy-usd,peggedUSD,fiat-backed,173782.42882411354
+131,UAHT,UAHT,uaht,peggedUAH,fiat-backed,444677.48
+132,USDM,USDM,mountain-protocol-usdm,peggedUSD,fiat-backed,27810963.192827504
+133,NARS,NARS,num-ars,peggedARS,fiat-backed,3100000000.0
+134,Phase Dollar,CASH,phase-dollar,peggedUSD,fiat-backed,1033.8309988772971
+135,Inter Stable Token,IST,inter-stable-token,peggedUSD,crypto-backed,827171.142977
+137,Collateralized Debt Token,CDT,collateralized-debt-token,peggedVAR,crypto-backed,24040.35107
+138,ARYZE eUSD,eUSD,aryze-eusd,peggedUSD,fiat-backed,22076.94876920265
+139,ARYZE eEUR,eEUR,aryze-eeur,peggedEUR,fiat-backed,23642.276259610095
+140,ARYZE eGBP,eGBP,aryze-egbp,peggedGBP,fiat-backed,5445.426567533039
+142,HYDT,HYDT,hydt-protocol-hydt,peggedUSD,algorithmic,88973.52108760581
+143,Verified USD,USDV,verified-usd-foundation-usdv,peggedUSD,fiat-backed,504282.64157300006
+144,High Yield USD,HYUSD,high-yield-usd,peggedUSD,algorithmic,3341167.170105129
+145,CAD Coin,CADC,cad-coin,peggedCAD,fiat-backed,1773531.7005367656
+146,Ethena USDe,USDe,ethena-usde,peggedUSD,crypto-backed,4869961479.436361
+147,Anchored Coins AEUR,AEUR,anchored-coins-eur,peggedEUR,fiat-backed,57009604.6
+148,Mynth MyUSD,MyUSD,myusd,peggedUSD,algorithmic,215449.293707
+149,Sable Coin,USDS,sable-coin,peggedUSD,crypto-backed,97260.53253212143
+150,USD Stable Colb,SCB,colb-usd-stablecolb,peggedUSD,fiat-backed,28563.35224657238
+151,zkUSD Dollar,zkUSD,goal3,peggedUSD,crypto-backed,1179099.482755
+152,Liquid Loans USDL,USDL,liquid-loans-usdl,peggedUSD,crypto-backed,4572459.449720083
+153,Binance Peg BUSD,BUSD,binance-peg-busd,peggedUSD,crypto-backed,264073029.85674408
+154,Bucket Protocol BUCK Stablecoin,BUCK,bucket-protocol-buck-stablecoin,peggedUSD,crypto-backed,70056251.9762642
+155,Glo Dollar,USDGLO,glo-dollar,peggedUSD,fiat-backed,3548716.288197456
+157,VNX Swiss Franc,VCHF,vnx-swiss-franc,peggedCHF,fiat-backed,3132025.898519922
+158,VNX EURO,VEUR,vnx-euro,peggedEUR,fiat-backed,2791376.494697106
+159,RIF US Dollar,USDRIF,rif-us-dollar,peggedUSD,crypto-backed,1028485.6878748103
+160,Sovryn Dollar,DLLR,sovryn-dollar,peggedUSD,crypto-backed,3542677.2840570863
+161,Quantoz EURD,EURD,quantoz-eurd,peggedEUR,fiat-backed,911282.2
+162,XUSD,XUSD,xusd-babelfish,peggedUSD,crypto-backed,2582524.2634788705
+163,PrismaLRT Ultra,ULTRA,prismalrt-ultra,peggedUSD,crypto-backed,45595.35272631377
+164,USDCB,USDCB,usdcb,peggedUSD,fiat-backed,225200.0
+165,AUDD,AUDD,novatti-australian-digital-dollar,peggedAUD,fiat-backed,409691.5323533
+166,Cygnus Finance Global USD,cgUSD,cygnus-finance-global-usd,peggedUSD,fiat-backed,44073021.256279
+167,Fractional ETH,fETH,f-x-protocol-fractional-eth,peggedVAR,crypto-backed,908645.5213535118
+168,fxUSD,fxUSD,f-x-protocol-usd,peggedUSD,crypto-backed,35598183.453243785
+169,GAI Stablecoin,GAI,goku-money-gai,peggedUSD,crypto-backed,14398.938026039426
+170,EURO3,EURO3,euro3,peggedEUR,crypto-backed,22975.780307789897
+171,Lets Get HAI,HAI,let-s-get-hai,peggedUSD,crypto-backed,690691.7590525729
+172,USDB Blast,USDB,usdb,peggedUSD,crypto-backed,81023166.8230942
+173,BlackRock USD,BUIDL,blackrock-usd-institutional-digital-liquidity-fund,peggedUSD,fiat-backed,2858232390.7738543
+174,rUSD,rUSD,fx-rusd,peggedUSD,crypto-backed,646002.3815952296
+175,PXDC Stablecoin,PXDC,powercity-pxdc,peggedUSD,crypto-backed,730701.5911186214
+176,Fathom Dollar,FXD,fathom-dollar,peggedUSD,crypto-backed,3472279.180745665
+177,UNO,UNO,nostra-uno,peggedUSD,fiat-backed,29849.55936612375
+178,Web 3 Dollar,USD3,web-3-dollar,peggedUSD,crypto-backed,42488633.38273398
+179,CJPY,CJPY,convertible-jpy-token,peggedJPY,crypto-backed,131283585.70964931
+180,Bread,BREAD,bread-fake-cg,peggedUSD,crypto-backed,535263.0751004516
+181,Zunami USD,zunUSD,zunUSD,peggedUSD,crypto-backed,303359.8392755301
+182,Zunami ETH,zunETH,zunETH,peggedVAR,crypto-backed,71.10572811757929
+183,Bitcoin USD,BtcUSD,bitcoin-usd-btcfi,peggedUSD,crypto-backed,9167654.490076568
+184,Magma Wen,WEN,magma-wen,peggedUSD,crypto-backed,109084.81242907874
+185,Gyroscope GYD,GYD,gyroscope-gyd,peggedUSD,crypto-backed,26521783.936918613
+186,International Stable Currency,ISC,international-stable-currency,peggedVAR,fiat-backed,1116464.946203
+187,KNOX Dollar,KNOX,knox-dollar,peggedUSD,crypto-backed,355236.56790341425
+188,Orby USC,USC,orby-network-usc-stablecoin,peggedUSD,crypto-backed,12331563.143160172
+189,btcUSD,btcUSD,f-x-btc-usd,peggedUSD,crypto-backed,46156.19131818559
+190,Revenue Generating USD,rgUSD,revenue-generating-usd,peggedUSD,crypto-backed,12687.289909772255
+191,bitSmiley USD,bitUSD,bitsmiley-bitusd,peggedUSD,crypto-backed,2056002.9385457183
+192,USDA,USDA,angle-usd,peggedUSD,crypto-backed,26483142.33789601
+193,Chi USC,USC,usc-2,peggedUSD,crypto-backed,23365.5952713468
+195,Usual USD,USD0,usual-usd,peggedUSD,fiat-backed,648316827.2684629
+196,Classic USD,USC,classic-usd,peggedUSD,fiat-backed,52620.67
+197,Resolv USD,USR,resolv-usr,peggedUSD,crypto-backed,273983763.9519178
+198,Stable Jack aUSD,aUSD,stable-jack-ausd,peggedUSD,crypto-backed,3358568.0986680817
+199,Celo Real,CREAL,celo-real-creal,peggedREAL,crypto-backed,2857021.9805752425
+200,Hedera Swiss Franc,HCHF,hedera-swiss-franc,peggedCHF,crypto-backed,206568.92305454
+201,HEX Dollar Coin,HEXDC,hex-dollar-coin,peggedUSD,crypto-backed,357752.39440479
+202,Anzen USDz,USDz,anzen-usdz,peggedUSD,fiat-backed,125393314.55543445
+203,Chad USD,cUSD,chad-usd,peggedUSD,crypto-backed,50.02688701128289
+204,Balanced Dollars,BNUSD,balanced-dollars,peggedUSD,crypto-backed,5540834.969633786
+205,Agora Dollar,AUSD,agora-dollar,peggedUSD,fiat-backed,77416709.633552
+206,Opus CASH,CASH,opus-cash,peggedUSD,crypto-backed,325237.14008560975
+207,Dyad,DYAD,dyad,peggedUSD,crypto-backed,112849.21605251318
+208,Dackie USD,DCKUSD,dackie-usd,peggedUSD,algorithmic,11158.811789
+209,Sky Dollar,USDS,usds,peggedUSD,crypto-backed,3690728933.064746
+210,Elixir deUSD,DEUSD,elixir-deusd,peggedUSD,crypto-backed,181108204.58044568
+211,Threshold USD,THUSD,threshold-usd,peggedUSD,crypto-backed,1372783.770181656
+212,Move Dollar,MOD,move-dollar,peggedUSD,crypto-backed,1374021.9685767023
+213,M By M^0,M,m-by-m^0,peggedUSD,fiat-backed,228479798.213993
+214,USDX Money USDX,USDX,usdx-money-usdx,peggedUSD,crypto-backed,627965477.0677173
+215,Moneta,USDM,moneta,peggedUSD,fiat-backed,11427484.9
+216,Solayer USD,sUSD,solayer-usd,peggedUSD,fiat-backed,9907892.215267366
+217,Reservoir Stablecoin,rUSD,reservoir-stablecoin,peggedUSD,fiat-backed,69094406.9161607
+218,Satoshi Stablecoin,satUSD,satoshi-stablecoin,peggedUSD,crypto-backed,22977591.257067807
+219,Astherus,USDF,astherus-usdf,peggedUSD,crypto-backed,121381337.43960933
+220,Avalon USDa,USDA,usda-2,peggedUSD,crypto-backed,305639061.4200355
+221,Ethena USDtb,USDTB,usdtb,peggedUSD,fiat-backed,1441308069.9964323
+222,Parallel USD,PAUSD,parallel-usd,peggedUSD,crypto-backed,82188.37524177949
+223,TREN Debt Token,XY,tren-debt-token,peggedUSD,crypto-backed,4579.172449346256
+224,dTRINITY USD,dUSD,dtrinity-usd,peggedUSD,crypto-backed,1887211.325854
+225,Zoth ZeUSD,ZeUSD,zoth-zeusd,peggedUSD,fiat-backed,27645937.189696
+226,Frankencoin,ZCHF,frankencoin,peggedCHF,crypto-backed,11011579.553615386
+227,Liquity BOLD,BOLD,liquity-bold,peggedUSD,crypto-backed,2303328.3700137204
+228,Quill USD,USDQ,quill-usd,peggedUSD,crypto-backed,4517.193018610313
+229,Level USD,LVLUSD,level-usd,peggedUSD,crypto-backed,178498826.28528813
+230,Noon USN,USN,noon-usn,peggedUSD,crypto-backed,26252972.44071892
+231,Honey,HONEY,honey-3,peggedUSD,crypto-backed,108835924.00244473
+232,Pinto,PINTO,pinto,peggedUSD,crypto-backed,10782759.556903
+233,TheStandard USD,USDS,thestandard-usd,peggedUSD,crypto-backed,374487.2919999174
+234,Worldwide USD,WUSD,worldwide-usd,peggedUSD,fiat-backed,5296774.138703061
+235,Frax USD,FRXUSD,frax-usd,peggedUSD,fiat-backed,142686439.16934747
+236,Synnax Stablecoin,syUSD,synnax-stablecoin,peggedUSD,crypto-backed,2706830.451562282
+237,Hashnote USYC,USYC,hashnote-usyc,peggedUSD,fiat-backed,397191119.251926
+238,Rings scUSD,SCUSD,rings-scusd,peggedUSD,crypto-backed,42861166.089215
+239,StablR Euro,EURR,stablr-euro,peggedEUR,fiat-backed,13454544.009963
+240,StablR USD,USDR,stablr-usd,peggedUSD,fiat-backed,5850474.0
+241,OpenDollar USDO,USDO,openeden-open-dollar,peggedUSD,fiat-backed,215413973.3514651
+242,Hermetica USDh,USDH,hermetica-usdh,peggedUSD,fiat-backed,4967167.69896341
+243,Coinshift,csUSDL,coinshift-usdl-morpho-vault,peggedUSD,crypto-backed,106437023.99965096
+244,Lift Dollar,USDL,lift-dollar,peggedUSD,fiat-backed,130648106.68261173
+245,Anzens USDA,USDA,anzens-usda,peggedUSD,fiat-backed,10387152.53
+246,Falcon USD,USDf,falcon-finance,peggedUSD,crypto-backed,373303768.8586778
+247,Schuman EUROP,EUROP,schuman-europ,peggedEUR,fiat-backed,1249441.0
+248,USDFC,USDFC,usdfc,peggedUSD,crypto-backed,275006.5776190211
+249,Brazilian Digital,BRZ,brz,peggedREAL,fiat-backed,276160043.7432
+250,Ripple USD,RLUSD,ripple-usd,peggedUSD,fiat-backed,313042486.8400001
+251,Felix feUSD,FEUSD,felix-feusd,peggedUSD,crypto-backed,43235919.230854854
+252,StandX DUSD,DUSD,standx-dusd,peggedUSD,crypto-backed,23000132.540537
+253,USBD,USBD,usbd,peggedUSD,crypto-backed,2001724.3783270386
+254,EUR CoinVertible,EURCV,societe-generale-forge-eurcv,peggedEUR,fiat-backed,28525315.000000007
+255,Aegis YUSD,YUSD,aegis-yusd,peggedUSD,fiat-backed,20355108.910266906
+256,Resupply USD,REUSD,resupply-usd,peggedUSD,crypto-backed,121327602.48789683
+257,OpenEden TBILL,TBILL,openeden-tbill,peggedUSD,fiat-backed,168527581.90254617
+259,Arche Protocol MSD,MSD,arche-protocol-msd,peggedUSD,crypto-backed,13382.444584
+260,VDollar Finance,VUSD,vdollar-finance,peggedUSD,crypto-backed,505787.0397693977
+261,Solomon USDv,USDV,solomon-usdv,peggedUSD,crypto-backed,1033982.480206904
+262,World Liberty Financial USD,USD1,usd1-wlfi,peggedUSD,fiat-backed,2127980529.9999998
+263,Hex Trust USDX,USDX,hex-trust-usdx,peggedUSD,fiat-backed,26210068.8192
+264,XBANKING USDE,USDE,xbanking-usde,peggedUSD,crypto-backed,19522.20708
