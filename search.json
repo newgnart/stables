@@ -26,5 +26,19 @@
     "title": "Stablecoin Research",
     "section": "About",
     "text": "About"
+  },
+  {
+    "objectID": "notebooks/index.html",
+    "href": "notebooks/index.html",
+    "title": "Notebooks",
+    "section": "",
+    "text": "This section contains various research notebooks exploring different aspects of stablecoins.\n\n\n\nYield Bearing Stablecoins - Analysis of yield-bearing stablecoin mechanisms"
+  },
+  {
+    "objectID": "notebooks/index.html#available-notebooks",
+    "href": "notebooks/index.html#available-notebooks",
+    "title": "Notebooks",
+    "section": "",
+    "text": "Yield Bearing Stablecoins - Analysis of yield-bearing stablecoin mechanisms"
   }
 ]
