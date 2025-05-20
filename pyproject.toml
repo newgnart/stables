@@ -1,7 +1,18 @@
 [project]
 name = "stables"
 version = "0.1.0"
-description = "Stablecoins research"
+description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = ["plotly>=6.0.1", "streamlit>=1.44.1", "watchdog>=6.0.0"]
+dependencies = [
+    "pandas>=2.2.3",
+    "plotly>=6.1.0",
+    "python-dotenv>=1.1.0",
+    "requests>=2.32.3",
+]
+
+[tool.uv.sources]
+stables = { path = "./src/stables" }
+
+[tool.uv]
+package = true
