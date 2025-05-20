@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  uv-notebooks:
+  notebooks:
     name: python
     runs-on: ubuntu-latest
 
