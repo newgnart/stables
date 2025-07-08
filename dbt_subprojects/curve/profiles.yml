@@ -1,0 +1,19 @@
+etherscan_raw:
+  target: stg_crvusd_market             
+  outputs:
+    raw:                                
+      type: duckdb
+      path: ../../data/raw/raw_curve.duckdb
+      threads: 4
+
+    stg_crvusd_market:
+      type: duckdb
+      path: ../../data/staged/staged_curve.duckdb
+      threads: 4
+      attach:
+        - path: ../../data/raw/raw_curve.duckdb
+          alias: raw_db
+  
+
+
+
