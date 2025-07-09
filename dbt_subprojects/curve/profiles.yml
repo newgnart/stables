@@ -1,15 +1,17 @@
 etherscan_raw:
-  target: stg_crvusd_market             
+  target: staged             
   outputs:
     raw:                                
       type: duckdb
       path: ../../data/raw/raw_curve.duckdb
       threads: 4
 
-    stg_crvusd_market:
+    staged:
       type: duckdb
       path: ../../data/staged/staged_curve.duckdb
       threads: 4
+      # schema: "staged_crvusd_market"
+      schema: "crvusd_market"
       attach:
         - path: ../../data/raw/raw_curve.duckdb
           alias: raw_db

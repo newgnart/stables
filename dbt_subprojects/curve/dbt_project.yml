@@ -8,7 +8,7 @@ profile: 'etherscan_raw'
 models:
   curve:
     +materialized: table
-    +schema: stg_crvusd_market
+    # +schema: st1
 
 # Configure source database attachment
 vars:

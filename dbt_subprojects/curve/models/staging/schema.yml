@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_logs
+  - name: logs
     description: "Staged Curve log data with extracted topics"
     columns:
       - name: topic0
