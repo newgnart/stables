@@ -43,8 +43,11 @@ cook/
 /.quarto/
 
 #
-data/raw
-data/processed
 
 _site/
 temp/
+
+*.duckdb
+dbt_subprojects/*/target/
+dbt_subprojects/*/logs/
+dbt_subprojects/*/.user.yml
