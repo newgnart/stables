@@ -48,6 +48,9 @@ _site/
 temp/
 
 *.duckdb
+*.duckdb.wal
+
+
 dbt_subprojects/*/target/
 dbt_subprojects/*/logs/
 dbt_subprojects/*/.user.yml

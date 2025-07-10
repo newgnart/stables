@@ -27,7 +27,6 @@ def backfill_logs():
 
     end_block = get_latest_block(chainid=chainid)
     for controller_address in controller_addresses[4:]:
-        time.sleep(10)
         start_block = get_loaded_block(
             duckdb_destination,
             table_catalog,
@@ -68,6 +67,7 @@ def backfill_logs():
                         logger.error(
                             f"Failed to load logs for block range {from_block}-{to_block} after {max_retries} retries."
                         )
+        time.sleep(10)
 
 
 if __name__ == "__main__":

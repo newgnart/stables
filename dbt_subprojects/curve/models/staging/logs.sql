@@ -9,8 +9,6 @@ SELECT
     CASE WHEN json_array_length(topics) >= 2 THEN json_extract_string(topics, '$[1]') END AS topic1,
     CASE WHEN json_array_length(topics) >= 3 THEN json_extract_string(topics, '$[2]') END AS topic2,
     CASE WHEN json_array_length(topics) >= 4 THEN json_extract_string(topics, '$[3]') END AS topic3,
-    CASE WHEN json_array_length(topics) >= 5 THEN json_extract_string(topics, '$[4]') END AS topic4,
-
     address,
     data,
     block_number,

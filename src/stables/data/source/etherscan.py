@@ -4,7 +4,12 @@ from datetime import datetime
 import dlt
 from dlt.sources.helpers.rest_client import paginators
 from dlt.sources.rest_api import rest_api_source
-from stables.config import *
+from stables.config import (
+    ETHERSCAN_API_BASE_URL,
+    ETHERSCAN_API_KEY,
+    ETHERSCAN_LOG_COLUMNS,
+    ETHERSCAN_TRANSACTION_COLUMNS,
+)
 import json
 import time
 import logging
