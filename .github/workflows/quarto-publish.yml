@@ -29,7 +29,7 @@ jobs:
       - run: pip install -e .
 
       - name: Copy Notebooks to Root so url doesn't need notebooks in it
-        run: cp notebooks/*.ipynb .
+        run: mv notebooks/*.ipynb .
 
       - name: Deploy to GitHub Pages
         uses: quarto-dev/quarto-actions/publish@v2
