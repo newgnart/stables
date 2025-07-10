@@ -1,9 +1,7 @@
 ---
-title: "Stablecoins"
+title: "All research of stablecoins"
 ---
 
 
 ## Yield Bearing
-Dashboard: [Yield Bearing Stables](yield_bearing.html)
-
-## Stablecoin Market Share
+[Dashboard](yield_bearing.html)

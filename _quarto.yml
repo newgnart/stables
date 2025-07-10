@@ -3,11 +3,11 @@ project:
   output-dir: _site
 
 website:
-  title: "Stablecoins"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
+  title: "Stables"
+  # navbar:
+  #   left:
+  #     - href: index.qmd
+  #       text: Home
 
 format:
   html:
