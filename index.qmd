@@ -4,6 +4,6 @@ title: "Stablecoins"
 
 
 ## Yield Bearing
-Dashboard: [Yield Bearing Stablecoins](yield_bearing.html)
+Dashboard: [Yield Bearing Stables](yield_bearing.html)
 
 ## Stablecoin Market Share

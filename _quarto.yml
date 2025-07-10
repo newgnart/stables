@@ -8,8 +8,6 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: yield_bearing.html
-        text: YBS
 
 format:
   html:
