@@ -3,11 +3,11 @@ project:
   output-dir: _site
 
 website:
-  title: "Stables"
-  # navbar:
-  #   left:
-  #     - href: index.qmd
-  #       text: Home
+  # title: ""
+  navbar:
+    left:
+      - href: index.qmd
+        text: "🏠 Home"
 
 format:
   html:

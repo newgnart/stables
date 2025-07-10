@@ -1,7 +1,6 @@
 ---
-title: "All research of stablecoins"
+title: "Stables research"
 ---
-
 
 ## Yield Bearing
 [Dashboard](yield_bearing.html)
