@@ -37,7 +37,7 @@ def backfill_logs():
             column_name="block_number",
         )
         for from_block in range(start_block, end_block, block_chunk_size):
-            to_block = min(from_block + block_chunk_size - 1, end_block)
+            to_block = str(min(from_block + block_chunk_size - 1, end_block))
             logger.info(f"Loading logs from block {from_block} to {to_block}")
 
             max_retries = 2
