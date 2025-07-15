@@ -4,7 +4,7 @@
     )
 }}
 
-SELECT 
+SELECT DISTINCT
     json_extract_string(topics, '$[0]') AS topic0,
     CASE WHEN json_array_length(topics) >= 2 THEN json_extract_string(topics, '$[1]') END AS topic1,
     CASE WHEN json_array_length(topics) >= 3 THEN json_extract_string(topics, '$[2]') END AS topic2,
@@ -20,4 +20,4 @@ SELECT
     transaction_hash,
     transaction_index
 
-FROM {{ source('raw_curve', 'logs') }} 
+FROM {{ source('raw_ethena', 'logs') }} 

@@ -74,6 +74,7 @@ def get_loaded_block(
         conn.close()
         return (
             df[0]
+            - 1  # Return the last loaded block minus one to start from the next block
             if df[0] is not None
             else int(get_contract_creation_txn(chainid, address)["blockNumber"])
         )
