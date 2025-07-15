@@ -1,0 +1,18 @@
+name: "ethena"
+version: "1.0"
+config-version: 2
+
+model-paths: ["models"]
+profile: "etherscan_raw"
+
+models:
+  ethena:
+    +materialized: table
+    staging:
+      +schema: usde
+    marts:
+      +schema: usde_marts
+
+# Configure source database attachment
+vars:
+  source_database_path: "../../data/raw/raw_ethena.duckdb"

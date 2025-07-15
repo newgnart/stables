@@ -1,0 +1,27 @@
+etherscan_raw:
+  target: staged
+  outputs:
+    raw:
+      type: duckdb
+      path: ../../data/raw/raw_ethena.duckdb
+      threads: 4
+
+    staged:
+      type: duckdb
+      path: ../../data/staged/staged_ethena.duckdb
+      threads: 4
+      schema: "usde"
+      attach:
+        - path: ../../data/raw/raw_ethena.duckdb
+          alias: raw_db
+    
+    marts:
+      type: duckdb
+      path: ../../data/marts/marts_ethena.duckdb
+      threads: 4
+      schema: "usde_marts"
+      attach:
+        - path: ../../data/raw/raw_ethena.duckdb
+          alias: raw_db
+        - path: ../../data/staged/staged_ethena.duckdb
+          alias: staged_db
