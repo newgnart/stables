@@ -1,5 +1,6 @@
 import os, json, time, logging
-import dlt, duckdb
+import dlt
+import psycopg2
 from utils import setup_logging, get_loaded_block
 from stables.data.source import etherscan_logs, get_latest_block
 
@@ -12,7 +13,6 @@ def load_logs(
     table_name,
     chainid,
     pipeline,
-    duckdb_destination,
     table_catalog,
     table_schema,
     block_chunk_size=100000,
@@ -21,7 +21,7 @@ def load_logs(
 ):
     if start_block is None:
         start_block = get_loaded_block(
-            duckdb_destination,
+            None,  # No longer need file path for PostgreSQL
             table_catalog,
             table_schema,
             table_name,
@@ -40,13 +40,18 @@ def load_logs(
         retries = max_retries
         while retries > 0:
             try:
-                n_before = (
-                    duckdb.connect(duckdb_destination)
-                    .execute(
-                        f"SELECT COUNT(*) FROM {table_catalog}.{table_schema}.{table_name}"
-                    )
-                    .fetchone()[0]
+                conn = psycopg2.connect(
+                    host=os.getenv("POSTGRES_HOST", "localhost"),
+                    port=int(os.getenv("POSTGRES_PORT", "5432")),
+                    database=os.getenv("POSTGRES_DB"),
+                    user=os.getenv("POSTGRES_USER"),
+                    password=os.getenv("POSTGRES_PASSWORD"),
                 )
+                cursor = conn.cursor()
+                cursor.execute(f"SELECT COUNT(*) FROM {table_schema}.{table_name}")
+                n_before = cursor.fetchone()[0]
+                cursor.close()
+                conn.close()
                 pipeline.run(
                     etherscan_logs(
                         chainid=chainid,
@@ -57,13 +62,18 @@ def load_logs(
                     table_name=table_name,
                     write_disposition="append",
                 )
-                n_after = (
-                    duckdb.connect(duckdb_destination)
-                    .execute(
-                        f"SELECT COUNT(*) FROM {table_catalog}.{table_schema}.{table_name}"
-                    )
-                    .fetchone()[0]
+                conn = psycopg2.connect(
+                    host=os.getenv("POSTGRES_HOST", "localhost"),
+                    port=int(os.getenv("POSTGRES_PORT", "5432")),
+                    database=os.getenv("POSTGRES_DB"),
+                    user=os.getenv("POSTGRES_USER"),
+                    password=os.getenv("POSTGRES_PASSWORD"),
                 )
+                cursor = conn.cursor()
+                cursor.execute(f"SELECT COUNT(*) FROM {table_schema}.{table_name}")
+                n_after = cursor.fetchone()[0]
+                cursor.close()
+                conn.close()
                 if n_after - n_before == 1000:
                     logger.warning(
                         f"Loaded 1000 logs from {from_block} to {to_block}, smaller batch size may be needed."
@@ -88,14 +98,19 @@ def load_logs(
 
 
 def backfill_logs():
-    duckdb_destination = "data/raw/raw_ethena.duckdb"
     table_catalog = "raw_ethena"
     table_schema = "usde"
     table_name = "logs"
     chainid = 1
     pipeline = dlt.pipeline(
         pipeline_name="ethena",
-        destination=dlt.destinations.duckdb(duckdb_destination),
+        destination=dlt.destinations.postgres(
+            host=os.getenv("POSTGRES_HOST", "localhost"),
+            port=int(os.getenv("POSTGRES_PORT", "5432")),
+            database=os.getenv("POSTGRES_DB"),
+            username=os.getenv("POSTGRES_USER"),
+            password=os.getenv("POSTGRES_PASSWORD"),
+        ),
         dataset_name=table_schema,
     )
     contract_address = "0x4c9EDD5852cd905f086C759E8383e09bff1E68B3".lower()
@@ -104,7 +119,6 @@ def backfill_logs():
         table_name,
         chainid,
         pipeline,
-        duckdb_destination,
         table_catalog,
         table_schema,
         block_chunk_size=1000,

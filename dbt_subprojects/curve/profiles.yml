@@ -2,19 +2,24 @@ etherscan_raw:
   target: staged             
   outputs:
     raw:                                
-      type: duckdb
-      path: ../../data/raw/raw_curve.duckdb
+      type: postgres
+      host: localhost
+      port: 5432
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: raw_curve
       threads: 4
 
     staged:
-      type: duckdb
-      path: ../../data/staged/staged_curve.duckdb
+      type: postgres
+      host: localhost
+      port: 5432
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: crvusd_market
       threads: 4
-      # schema: "staged_crvusd_market"
-      schema: "crvusd_market"
-      attach:
-        - path: ../../data/raw/raw_curve.duckdb
-          alias: raw_db
   
 
 

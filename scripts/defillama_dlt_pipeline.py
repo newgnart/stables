@@ -1,5 +1,5 @@
 import os, json, time, logging
-import dlt, duckdb
+import dlt
 from utils import setup_logging
 from stables.data.source import (
     defillama_stables_base,
@@ -10,34 +10,21 @@ from stables.data.source import (
 
 logger = logging.getLogger(__name__)
 setup_logging(log_file="logs/defillama_dlt_pipeline.log")
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def defillama_stables_pipeline():
     """
     Runs the DeFiLlama stablecoins pipeline and displays the loaded data.
     """
-    duckdb_destination = "data/raw/raw_defillama.duckdb"
+    # DLT will now use the credentials from .dlt/secrets.toml
     pipeline = dlt.pipeline(
         pipeline_name="defillama_stables",
-        destination=dlt.destinations.duckdb(duckdb_destination),
+        destination="postgres",
         dataset_name="yields",
     )
-
-    # Run the pipeline
-    # pipeline.run(
-    #     defillama_stables_base(), table_name="base", write_disposition="replace"
-    # )
-    # pipeline.run(
-    #     defillama_stables_chain_circulating(),
-    #     table_name="chain_circulating",
-    #     write_disposition="replace",
-    # )
-
-    # pipeline.run(
-    #     defillama_stablecoin_chain_tokens(stablecoin_id=110),
-    #     table_name="chain_tokens",
-    #     write_disposition="replace",
-    # )
 
     pipeline.run(
         defillama_yield_pools(),
@@ -48,3 +35,4 @@ def defillama_stables_pipeline():
 
 if __name__ == "__main__":
     defillama_stables_pipeline()
+    # check_variables()

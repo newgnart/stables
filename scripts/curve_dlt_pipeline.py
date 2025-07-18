@@ -1,5 +1,5 @@
 import os, json, time, logging
-import dlt, duckdb
+import dlt
 from utils import setup_logging, get_loaded_block
 from stables.data.source import etherscan_logs, get_latest_block
 
@@ -8,7 +8,6 @@ setup_logging(log_file="logs/curve_dlt_pipeline.log")
 
 
 def backfill_logs():
-    duckdb_destination = "data/raw/raw_curve.duckdb"
     table_catalog = "raw_curve"
     table_schema = "crvusd_market"
     table_name = "logs"
@@ -16,7 +15,13 @@ def backfill_logs():
     block_chunk_size = 100000
     pipeline = dlt.pipeline(
         pipeline_name="curve",
-        destination=dlt.destinations.duckdb(duckdb_destination),
+        destination=dlt.destinations.postgres(
+            host=os.getenv("POSTGRES_HOST", "localhost"),
+            port=int(os.getenv("POSTGRES_PORT", "5432")),
+            database=os.getenv("POSTGRES_DB"),
+            username=os.getenv("POSTGRES_USER"),
+            password=os.getenv("POSTGRES_PASSWORD"),
+        ),
         dataset_name=table_schema,
     )
     with open("data/address/curve_addresses.json", "r") as f:
@@ -28,7 +33,7 @@ def backfill_logs():
     end_block = get_latest_block(chainid=chainid)
     for controller_address in controller_addresses[4:]:
         start_block = get_loaded_block(
-            duckdb_destination,
+            None,  # No longer need file path for PostgreSQL
             table_catalog,
             table_schema,
             table_name,
