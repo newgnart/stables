@@ -3,7 +3,7 @@ from dlt.sources.rest_api import rest_api_source
 from dlt.sources.helpers.rest_client import paginators
 from dlt.common.typing import TDataItems
 from typing import Iterable
-
+import json
 import logging
 
 logger = logging.getLogger(__name__)
@@ -11,8 +11,8 @@ logger = logging.getLogger(__name__)
 DEFILLAMA_STABLECOINS_API_URL = "https://stablecoins.llama.fi"
 DEFILLAMA_YIELDS_API_URL = "https://yields.llama.fi"
 YIELDS_POOLS_COLUMNS = {
-    "reward_tokens": {"data_type": "json"},
-    "underlying_tokens": {"data_type": "json"},
+    "reward_tokens": {"data_type": "text", "nullable": True},
+    "underlying_tokens": {"data_type": "text", "nullable": True},
 }
 YIELDS_POOL_COLUMNS = {
     "apy_reward": {"data_type": "json"},
@@ -67,12 +67,28 @@ def _create_defillama_source(
 
 
 @dlt.resource(columns=YIELDS_POOLS_COLUMNS)  # type: ignore[arg-type]
-def defillama_yield_pools() -> dlt.sources.DltResource:
+def defillama_yield_pools() -> Iterable[TDataItems]:
     """Get the latest data for all yield pools."""
     resource = _create_defillama_source(
         DEFILLAMA_YIELDS_API_URL, "pools", data_selector="data"
     )
-    return resource
+
+    # Process each pool to ensure reward_tokens and underlying_tokens are always present
+    for pool in resource:
+        # Extract the original fields
+        reward_tokens = pool.get("rewardTokens", []) or []
+        underlying_tokens = pool.get("underlyingTokens", []) or []
+
+        # Remove the original camelCase fields to prevent DLT from creating separate tables
+        if "rewardTokens" in pool:
+            del pool["rewardTokens"]
+        if "underlyingTokens" in pool:
+            del pool["underlyingTokens"]
+
+        pool["reward_tokens"] = json.dumps(reward_tokens)
+        pool["underlying_tokens"] = json.dumps(underlying_tokens)
+
+        yield pool
 
 
 @dlt.resource(columns=YIELDS_POOL_COLUMNS)  # type: ignore[arg-type]

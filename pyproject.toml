@@ -5,8 +5,7 @@ description = "stables data"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "dbt-duckdb>=1.9.4",
-    "dlt[duckdb]>=1.12.3",
+    "psycopg2-binary>=2.9.0",
     "jupyter>=1.1.1",
     "jupyter-contrib-nbextensions",
     "matplotlib>=3.10.3",
@@ -18,6 +17,10 @@ dependencies = [
     "scikit-learn>=1.6.1",
     "scipy>=1.15.3",
     "seaborn>=0.13.2",
+    "sqlalchemy>=2.0.0",
+    "dlt[postgres]>=1.12.3",
+    "dbt-core>=1.10.4",
+    "dbt-postgres>=1.9.0",
 ]
 
 [tool.uv.sources]
