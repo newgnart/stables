@@ -1,6 +1,6 @@
 import os, json, time, logging
 import dlt
-from utils import setup_logging
+from stables.utils.logging import setup_logging
 from stables.data.source import (
     defillama_stables_base,
     defillama_stables_chain_circulating,

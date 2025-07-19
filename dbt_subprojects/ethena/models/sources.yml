@@ -1,12 +1,11 @@
 version: 2
 
 sources:
-  - name: raw_ethena
-    description: "usde contract logs"
-    database: raw_db
-    schema: usde
+  - name: raw_usde_contracts
+    description: "USDe contract data across all chains"
+    schema: ethena_raw
     tables:
-      - name: logs
+      - name: usde_contract_logs
         description: "Raw log data from USDE contract"
         columns:
           - name: topics

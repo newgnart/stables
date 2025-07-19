@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: usde_erc20_transfers
+    description: "ERC20 Transfer events from USDE contract with decoded addresses and amounts"
+    columns:
+      - name: token_address
+        description: "USDE token contract address"
+        tests:
+          - not_null
+      - name: from_address
+        description: "Address sending tokens (decoded from topic1)"
+        tests:
+          - not_null
+      - name: to_address
+        description: "Address receiving tokens (decoded from topic2)"
+        tests:
+          - not_null
+      - name: amount_hex
+        description: "Transfer amount as hex string without 0x prefix"
+      - name: amount_raw
+        description: "Raw transfer amount data from contract logs"
+      - name: contract_name
+        description: "Contract identifier (USDE)"
+      - name: block_number
+        description: "Block number where transfer occurred"
+        tests:
+          - not_null
+      - name: block_hash
+        description: "Block hash"
+      - name: block_timestamp
+        description: "Block timestamp"
+      - name: transaction_hash
+        description: "Transaction hash"
+        tests:
+          - not_null
+      - name: log_index
+        description: "Position of this log within the transaction"

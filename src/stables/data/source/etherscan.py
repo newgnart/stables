@@ -129,7 +129,11 @@ def etherscan_logs(
     logger.info(
         f"Fetching logs for address {address} from block {fromBlock} to {toBlock}"
     )
-    return _create_etherscan_source(params)
+    
+    source = _create_etherscan_source(params)
+    for item in source:
+        item["chainid"] = chainid
+        yield item
 
 
 # --- Refactored V2 API Calls ---

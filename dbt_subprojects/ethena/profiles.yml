@@ -1,32 +1,22 @@
-etherscan_raw:
-  target: staged
+ethena:
+  target: dev
   outputs:
     raw:
       type: postgres
-      host: localhost
+      host: "{{ env_var('POSTGRES_HOST') }}"
       port: 5432
       user: "{{ env_var('POSTGRES_USER') }}"
       password: "{{ env_var('POSTGRES_PASSWORD') }}"
       dbname: "{{ env_var('POSTGRES_DB') }}"
-      schema: raw_ethena
+      schema: ethena_raw
       threads: 4
 
-    staged:
+    dev:
       type: postgres
-      host: localhost
+      host: "{{ env_var('POSTGRES_HOST') }}"
       port: 5432
       user: "{{ env_var('POSTGRES_USER') }}"
       password: "{{ env_var('POSTGRES_PASSWORD') }}"
       dbname: "{{ env_var('POSTGRES_DB') }}"
-      schema: usde
-      threads: 4
-    
-    marts:
-      type: postgres
-      host: localhost
-      port: 5432
-      user: "{{ env_var('POSTGRES_USER') }}"
-      password: "{{ env_var('POSTGRES_PASSWORD') }}"
-      dbname: "{{ env_var('POSTGRES_DB') }}"
-      schema: usde_marts
+      schema: ethena
       threads: 4
