@@ -5,7 +5,7 @@ import pandas as pd
 from contextlib import contextmanager
 from sqlalchemy import create_engine
 
-from stables.data.source import get_contract_creation_txn
+from stables.data.source.etherscan import get_contract_creation_txn
 from stables.config import PostgresConfig
 
 import logging

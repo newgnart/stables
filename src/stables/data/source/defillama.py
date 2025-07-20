@@ -10,26 +10,30 @@ logger = logging.getLogger(__name__)
 
 DEFILLAMA_STABLECOINS_API_URL = "https://stablecoins.llama.fi"
 DEFILLAMA_YIELDS_API_URL = "https://yields.llama.fi"
-YIELDS_POOLS_COLUMNS = {
+YIELD_POOLS_COLUMNS = {
     "reward_tokens": {"data_type": "text", "nullable": True},
     "underlying_tokens": {"data_type": "text", "nullable": True},
 }
-YIELDS_POOL_COLUMNS = {
-    "apy_reward": {"data_type": "json"},
-    "il7d": {"data_type": "json"},
-    "apy_base7d": {"data_type": "json"},
+YIELD_POOL_COLUMNS = {
+    # "apy_reward": {"data_type": "json"},
+    # "il7d": {"data_type": "json"},
+    # "apy_base7d": {"data_type": "json"},
     "apy_base": {"data_type": "json"},
 }
 
-STABLECOIN_CHAIN_BALANCES_COLUMNS = {
-    "circulating": {"data_type": "json"},
-    "bridgedTo": {"data_type": "json"},
-    "bridges": {"data_type": "json"},
-}
 
 STABLECOIN_CHAIN_TOKENS_COLUMNS = {
     "circulating": {"data_type": "float"},
     "bridged_to": {"data_type": "float"},
+}
+
+STABLE_CIRCULATING_COLUMNS = {
+    "id": {"data_type": "bigint"},
+    "name": {"data_type": "text"},
+    "symbol": {"data_type": "text"},
+    "date": {"data_type": "bigint"},
+    "chain": {"data_type": "text"},
+    "circulating": {"data_type": "bigint"},
 }
 
 
@@ -66,8 +70,8 @@ def _create_defillama_source(
     return source.resources[endpoint]
 
 
-@dlt.resource(columns=YIELDS_POOLS_COLUMNS)  # type: ignore[arg-type]
-def defillama_yield_pools() -> Iterable[TDataItems]:
+@dlt.resource(columns=YIELD_POOLS_COLUMNS)  # type: ignore[arg-type]
+def yield_pools() -> Iterable[TDataItems]:
     """Get the latest data for all yield pools."""
     resource = _create_defillama_source(
         DEFILLAMA_YIELDS_API_URL, "pools", data_selector="data"
@@ -91,8 +95,8 @@ def defillama_yield_pools() -> Iterable[TDataItems]:
         yield pool
 
 
-@dlt.resource(columns=YIELDS_POOL_COLUMNS)  # type: ignore[arg-type]
-def defillama_yield_pool(pool_id: str) -> dlt.sources.DltResource:
+@dlt.resource(columns=YIELD_POOL_COLUMNS)  # type: ignore[arg-type]
+def yield_pool(pool_id: str) -> dlt.sources.DltResource:
     """Get historical data for a yield pool."""
     resource = _create_defillama_source(
         DEFILLAMA_YIELDS_API_URL, f"chart/{pool_id}", data_selector="data"
@@ -183,70 +187,34 @@ def defillama_stables_chain_circulating() -> Iterable[TDataItems]:
             yield chain_data_obj
 
 
-@dlt.resource(columns=STABLECOIN_CHAIN_BALANCES_COLUMNS)  # type: ignore[arg-type]
-def defillama_stablecoin_chain_balances(stablecoin_id: str) -> dlt.sources.DltResource:
-    """Get chain balances data for a specific stablecoin by ID."""
+@dlt.resource(columns=STABLE_CIRCULATING_COLUMNS)  # type: ignore[arg-type]
+def stable_circulating(coin_id: int) -> Iterable[TDataItems]:
+    """Get chain circulating data for a specific stablecoin by ID."""
     resource = _create_defillama_source(
         DEFILLAMA_STABLECOINS_API_URL,
-        f"stablecoin/{stablecoin_id}",
-        data_selector="chainBalances",
+        f"stablecoin/{coin_id}",
+        data_selector="$",  # Get full response to access both metadata and chainBalances
     )
-    return resource.with_name("stablecoin_chain_balances")
 
+    for response in resource:
+        base_info = {
+            "id": coin_id,
+            "name": response.get("name"),
+            "symbol": response.get("symbol"),
+        }
 
-@dlt.resource()
-def defillama_stablecoin_chain_tokens(stablecoin_id: str) -> Iterable[TDataItems]:
-    """
-    Fetches stablecoin chain token data from DefiLlama and yields normalized data.
-    """
-    raw_data_resource = _create_defillama_source(
-        DEFILLAMA_STABLECOINS_API_URL,
-        f"stablecoin/{stablecoin_id}",
-        data_selector="chainBalances",
-    )
-    # peg_type = _create_defillama_source(
-    #     DEFILLAMA_STABLECOINS_API_URL,
-    #     f"stablecoin/{stablecoin_id}",
-    #     data_selector="pegType",
-    # )
-    peg_type = "peggedUSD"
-
-    chain_balances = next(iter(raw_data_resource), None)
-    if not chain_balances:
-        return
-
-    for chain_name, chain_data in chain_balances.items():
-        if not chain_data or not isinstance(chain_data, dict):
-            continue
-
-        tokens = chain_data.get("tokens", [])
-        if not tokens:
-            continue
-
-        for token_data in tokens:
-            if not isinstance(token_data, dict):
-                continue
-
-            date = token_data.get("date")
-            if not date:
-                continue
-
-            circulating_data = token_data.get("circulating", {})
-            bridged_to_data = token_data.get("bridgedTo", {})
-
-            # Extract peggedUSD values
-            circulating_value = _get_circulating_value(circulating_data, peg_type)
-            bridged_value = _get_circulating_value(bridged_to_data, peg_type)
-
-            # Extract bridge information
-            # bridges = bridged_to_data.get("bridges", {})
-
-            chain_token = {
-                "stablecoin_id": int(stablecoin_id),
-                "chain": chain_name,
-                "date": date,
-                "circulating": circulating_value,
-                "bridged_to": bridged_value,
-                # "bridges": bridges,
-            }
-            yield chain_token
+        for chain_name, chain_data in response.get("chainBalances", {}).items():
+            for entry in chain_data.get("tokens", []):
+                circulating_data = entry.get("circulating", {})
+                if circulating_data:
+                    circulating_value = list(circulating_data.values())[0]
+                    yield {
+                        **base_info,
+                        "date": entry.get("date"),
+                        "circulating": (
+                            int(circulating_value)
+                            if circulating_value is not None
+                            else None
+                        ),
+                        "chain": chain_name,
+                    }
