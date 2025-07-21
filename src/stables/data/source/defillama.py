@@ -2,9 +2,11 @@ import dlt
 from dlt.sources.rest_api import rest_api_source
 from dlt.sources.helpers.rest_client import paginators
 from dlt.common.typing import TDataItems
-from typing import Iterable
+from typing import Iterable, Literal
 import json
 import logging
+
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -218,3 +220,76 @@ def stable_circulating(coin_id: int) -> Iterable[TDataItems]:
                         ),
                         "chain": chain_name,
                     }
+
+
+@dlt.resource()
+def protocol_revenue(
+    protocol: str,
+    data_type: Literal["historical", "current", "breakdown"] = "historical",
+) -> Iterable[TDataItems]:
+    """
+    Get protocol revenue data with unified structure.
+
+    Args:
+        protocol: Protocol name (e.g., "ethena")
+        data_type: "historical", "current", "both", or "breakdown"
+    """
+    if data_type == "historical":
+        # Get historical data from totalDataChart
+        historical_resource = _create_defillama_source(
+            "https://api.llama.fi",
+            f"summary/fees/{protocol}",
+            data_selector="totalDataChart",
+        )
+
+        # Yield historical data
+        for item in historical_resource:
+            if isinstance(item, list) and len(item) == 2:
+                yield {
+                    "timestamp": item[0],
+                    "revenue": item[1],
+                    "protocol": protocol,
+                }
+
+    if data_type == "current":
+        # Get current data
+        current_resource = _create_defillama_source(
+            "https://api.llama.fi", f"summary/fees/{protocol}", data_selector="$"
+        )
+
+        current_timestamp = int(time.time())
+
+        for item in current_resource:
+            current_revenue = item.get("total24h", 0)
+            yield {
+                "timestamp": current_timestamp,
+                "revenue": current_revenue,
+                "protocol": protocol,
+            }
+
+    if data_type == "breakdown":
+        # Get breakdown data from totalDataChartBreakdown
+        breakdown_resource = _create_defillama_source(
+            "https://api.llama.fi",
+            f"summary/fees/{protocol}",
+            data_selector="totalDataChartBreakdown",
+        )
+
+        for item in breakdown_resource:
+            if isinstance(item, list) and len(item) == 2:
+                timestamp = item[0]
+                breakdown_data = item[1]  # {"Ethereum": {"Ethena USDe": value}}
+
+                # Extract revenue data from nested structure
+                if isinstance(breakdown_data, dict):
+                    # Flatten the nested chain -> protocol -> revenue structure
+                    for chain, chain_data in breakdown_data.items():
+                        if isinstance(chain_data, dict):
+                            for sub_protocol, revenue_value in chain_data.items():
+                                yield {
+                                    "timestamp": timestamp,
+                                    "revenue": revenue_value,
+                                    "protocol": protocol,
+                                    "chain": chain,
+                                    "sub_protocol": sub_protocol,
+                                }
