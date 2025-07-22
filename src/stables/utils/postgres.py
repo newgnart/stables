@@ -50,7 +50,7 @@ def get_sqlalchemy_engine(db_config: PostgresConfig):
         sqlalchemy.engine.Engine: SQLAlchemy engine
     """
     params = db_config.get_connection_params()
-    connection_string = f"postgresql://{params['user']}:{params['password']}@{params['host']}:{params['port']}/{params['database']}"
+    connection_string = f"postgresql://{params['username']}:{params['password']}@{params['host']}:{params['port']}/{params['database']}"
     return create_engine(connection_string)
 
 

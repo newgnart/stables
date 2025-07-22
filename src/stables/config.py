@@ -5,15 +5,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ETHERSCAN_API_BASE_URL = "https://api.etherscan.io/v2/api"
+
 ETHERSCAN_API_KEY = os.getenv("ETHERSCAN_API_KEY")
 
-ETHERSCAN_TRANSACTION_COLUMNS = {
-    "block_number": {"data_type": "bigint"},
-    "time_stamp": {"data_type": "timestamp"},
-}
-
-COINGECKO_API_BASE_URL = "https://api.coingecko.com/api/v3"
 COINGECKO_API_KEY = os.getenv("COINGECKO_API_KEY")
 COINGECKO_PRICES_COLUMNS = {
     "timestamp": {"data_type": "timestamp", "timezone": False, "precision": 3},
@@ -28,43 +22,71 @@ COINGECKO_OHLC_COLUMNS = {
     "close": {"data_type": "decimal"},
 }
 
-ETHERSCAN_LOG_COLUMNS = {
-    "topics": {"data_type": "json"},
-    "block_number": {"data_type": "bigint"},
-    "time_stamp": {"data_type": "bigint"},
-    "gas_price": {"data_type": "bigint"},
-    "gas_used": {"data_type": "bigint"},
-    "log_index": {"data_type": "bigint"},
-    "transaction_index": {"data_type": "bigint"},
-}
+
+class API_URL:
+    Etherscan = "https://api.etherscan.io/v2/api"
+    Coingecko = "https://api.coingecko.com/api/v3"
+    DeFiLlamaStablecoins = "https://stablecoins.llama.fi"
+    DeFiLlamaYields = "https://yields.llama.fi"
+
+
+class BlockExplorerColumns:
+    Log = {
+        "topics": {"data_type": "json"},
+        "block_number": {"data_type": "bigint"},
+        "time_stamp": {"data_type": "bigint"},
+        "gas_price": {"data_type": "bigint"},
+        "gas_used": {"data_type": "bigint"},
+        "log_index": {"data_type": "bigint"},
+        "transaction_index": {"data_type": "bigint"},
+    }
+    Transaction = {
+        "block_number": {"data_type": "bigint"},
+        "time_stamp": {"data_type": "timestamp"},
+    }
 
 
 class PostgresConfig:
     """PostgreSQL configuration manager that reads from environment variables."""
 
-    def __init__(self):
-        self.host = os.getenv("POSTGRES_HOST", "localhost")
-        self.port = int(os.getenv("POSTGRES_PORT", "5432"))
-        self.database = os.getenv("POSTGRES_DB")
-        self.user = os.getenv("POSTGRES_USER")
-        self.password = os.getenv("POSTGRES_PASSWORD")
+    def __init__(
+        self,
+        host: str = None,
+        port: int = None,
+        database: str = None,
+        username: str = None,
+        password: str = None,
+    ):
+        """Initializes the PostgresConfig with environment variables or provided parameters."""
+        self.host = host
+        self.port = port
+        self.database = database
+        self.username = username
+        self.password = password
 
     def get_connection_params(self) -> Dict[str, Any]:
-        """Return connection parameters as a dictionary."""
+        """Return connection parameters for psycopg2."""
         return {
             "host": self.host,
             "port": self.port,
             "database": self.database,
-            "user": self.user,
+            "username": self.username,
             "password": self.password,
         }
 
-    def get_dlt_connection_params(self) -> Dict[str, Any]:
-        """Return connection parameters formatted for DLT destination."""
-        return {
-            "host": self.host,
-            "port": self.port,
-            "database": self.database,
-            "username": self.user,  # DLT uses 'username' instead of 'user'
-            "password": self.password,
-        }
+
+local_pg_config = PostgresConfig(
+    host=os.getenv("LOCAL_POSTGRES_HOST"),
+    port=int(os.getenv("LOCAL_POSTGRES_PORT")),
+    database=os.getenv("LOCAL_POSTGRES_DB"),
+    username=os.getenv("LOCAL_POSTGRES_USER"),
+    password=os.getenv("LOCAL_POSTGRES_PASSWORD"),
+)
+
+remote_pg_config = PostgresConfig(
+    host=os.getenv("REMOTE_POSTGRES_HOST"),
+    port=int(os.getenv("REMOTE_POSTGRES_PORT")),
+    database=os.getenv("REMOTE_POSTGRES_DB"),
+    username=os.getenv("REMOTE_POSTGRES_USER"),
+    password=os.getenv("REMOTE_POSTGRES_PASSWORD"),
+)

@@ -5,7 +5,7 @@ from stables.data.source import etherscan_logs, get_latest_block
 logger = logging.getLogger(__name__)
 
 
-def logs_loading(
+def logs(
     pipeline,
     db_config: PostgresConfig,
     table_schema: str,

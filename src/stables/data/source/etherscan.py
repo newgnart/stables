@@ -4,12 +4,7 @@ from datetime import datetime
 import dlt
 from dlt.sources.helpers.rest_client import paginators
 from dlt.sources.rest_api import rest_api_source
-from stables.config import (
-    ETHERSCAN_API_BASE_URL,
-    ETHERSCAN_API_KEY,
-    ETHERSCAN_LOG_COLUMNS,
-    ETHERSCAN_TRANSACTION_COLUMNS,
-)
+from stables.config import API_URL, BlockExplorerColumns, ETHERSCAN_API_KEY
 import json
 import time
 import logging
@@ -62,7 +57,7 @@ def _create_etherscan_source(params: dict):
     return rest_api_source(
         {
             "client": {
-                "base_url": ETHERSCAN_API_BASE_URL,
+                "base_url": API_URL.Etherscan,
                 "paginator": paginators.PageNumberPaginator(
                     base_page=1, total_path=None, page_param="page"
                 ),
@@ -78,7 +73,7 @@ def _create_etherscan_source(params: dict):
     )
 
 
-@dlt.resource(columns=ETHERSCAN_TRANSACTION_COLUMNS)
+@dlt.resource(columns=BlockExplorerColumns.Transaction)
 def etherscan_transactions(
     chainid,
     address,
@@ -105,7 +100,7 @@ def etherscan_transactions(
     return _create_etherscan_source(params)
 
 
-@dlt.resource(columns=ETHERSCAN_LOG_COLUMNS)
+@dlt.resource(columns=BlockExplorerColumns.Log)
 def etherscan_logs(
     chainid,
     address,
@@ -129,7 +124,7 @@ def etherscan_logs(
     logger.info(
         f"Fetching logs for address {address} from block {fromBlock} to {toBlock}"
     )
-    
+
     source = _create_etherscan_source(params)
     for item in source:
         item["chainid"] = chainid
