@@ -79,7 +79,7 @@ def _fetch_one(
 
 
 def get_rows_count(
-    db_config: PostgresConfig,
+    pg_config: PostgresConfig,
     table_schema: str,
     table_name: str,
 ) -> int:
@@ -103,14 +103,14 @@ def get_rows_count(
             WHERE table_schema = %s AND table_name = %s
         )
         """
-        table_exists = _fetch_one(db_config, check_query, (table_schema, table_name))
+        table_exists = _fetch_one(pg_config, check_query, (table_schema, table_name))
 
         if not table_exists or not table_exists[0]:
             return 0
 
         # If table exists, get row count
         query = f"SELECT COUNT(*) FROM {table_schema}.{table_name}"
-        result = _fetch_one(db_config, query)
+        result = _fetch_one(pg_config, query)
         return result[0] if result else 0
     except Exception as e:
         logger.warning(f"Error getting row count for {table_schema}.{table_name}: {e}")
@@ -118,7 +118,7 @@ def get_rows_count(
 
 
 def get_loaded_block(
-    db_config: PostgresConfig,
+    pg_config: PostgresConfig,
     table_schema: str,
     table_name: str,
     chainid: int,
@@ -156,7 +156,7 @@ def get_loaded_block(
         FROM {table_schema}.{table_name} 
         WHERE address = %s
         """
-        result = _fetch_one(db_config, query, (address,))
+        result = _fetch_one(pg_config, query, (address,))
 
         if result and result[0] is not None:
             return result[0]

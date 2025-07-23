@@ -54,23 +54,23 @@ class PostgresConfig:
         host: str = None,
         port: int = None,
         database: str = None,
-        username: str = None,
+        user: str = None,
         password: str = None,
     ):
         """Initializes the PostgresConfig with environment variables or provided parameters."""
         self.host = host
         self.port = port
         self.database = database
-        self.username = username
+        self.user = user
         self.password = password
 
-    def get_connection_params(self) -> Dict[str, Any]:
+    def get_connection_params(self) -> dict[str, Any]:
         """Return connection parameters for psycopg2."""
         return {
             "host": self.host,
             "port": self.port,
             "database": self.database,
-            "username": self.username,
+            "user": self.user,
             "password": self.password,
         }
 
@@ -79,7 +79,7 @@ local_pg_config = PostgresConfig(
     host=os.getenv("LOCAL_POSTGRES_HOST"),
     port=int(os.getenv("LOCAL_POSTGRES_PORT")),
     database=os.getenv("LOCAL_POSTGRES_DB"),
-    username=os.getenv("LOCAL_POSTGRES_USER"),
+    user=os.getenv("LOCAL_POSTGRES_USER"),
     password=os.getenv("LOCAL_POSTGRES_PASSWORD"),
 )
 
@@ -87,6 +87,6 @@ remote_pg_config = PostgresConfig(
     host=os.getenv("REMOTE_POSTGRES_HOST"),
     port=int(os.getenv("REMOTE_POSTGRES_PORT")),
     database=os.getenv("REMOTE_POSTGRES_DB"),
-    username=os.getenv("REMOTE_POSTGRES_USER"),
+    user=os.getenv("REMOTE_POSTGRES_USER"),
     password=os.getenv("REMOTE_POSTGRES_PASSWORD"),
 )

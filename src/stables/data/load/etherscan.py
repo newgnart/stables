@@ -1,13 +1,13 @@
 import time, logging
 from stables.utils.postgres import get_rows_count, get_loaded_block, PostgresConfig
-from stables.data.source import etherscan_logs, get_latest_block
+from stables.data.source.etherscan import etherscan_logs, get_latest_block
 
 logger = logging.getLogger(__name__)
 
 
 def logs(
     pipeline,
-    db_config: PostgresConfig,
+    pg_config: PostgresConfig,
     table_schema: str,
     table_name: str,
     chainid: int,
@@ -47,7 +47,7 @@ def logs(
     """
     if start_block is None:
         start_block = get_loaded_block(
-            db_config,
+            pg_config,
             table_schema,
             table_name,
             chainid,
@@ -66,7 +66,7 @@ def logs(
         retries = max_retries
         while retries > 0:
             try:
-                n_before = get_rows_count(db_config, table_schema, table_name)
+                n_before = get_rows_count(pg_config, table_schema, table_name)
                 pipeline.run(
                     etherscan_logs(
                         chainid=chainid,
@@ -77,7 +77,7 @@ def logs(
                     table_name=table_name,
                     write_disposition="append",
                 )
-                n_after = get_rows_count(db_config, table_schema, table_name)
+                n_after = get_rows_count(pg_config, table_schema, table_name)
 
                 n = n_after - n_before
 
