@@ -1,6 +1,14 @@
 project:
   type: website
   output-dir: _site
+  render:
+    - "*.qmd"
+    # - "*.md"
+    - "notebooks/"
+    # - "!temp/"
+
+env:
+  allowEmptyValues: true
 
 website:
   # title: ""
@@ -13,4 +21,6 @@ format:
   html:
     theme: cosmo
     toc: true
-    code-fold: true 
+    code-fold: true
+
+jupyter: python3 

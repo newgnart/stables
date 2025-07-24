@@ -3,4 +3,7 @@ title: "Stables research"
 ---
 
 ## Yield Bearing
-[Dashboard](yield_bearing.html)
+[Dashboard](notebooks/yield_bearing.html)
+
+## Ethena
+[Dashboards](notebooks/ethena.html)

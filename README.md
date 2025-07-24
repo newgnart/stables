@@ -64,3 +64,6 @@ cd dbt_subprojects/curve
 uv run dbt run
 ```
 This will run the dbt models and save the transformed data in the `staged` schema `data/staged/staged_curve.duckdb`.
+
+
+
