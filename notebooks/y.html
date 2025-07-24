@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>tasks</title>
+<title>Yield Bearing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -97,29 +97,42 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><h1 id="ethereum-event-log-decoding-task-prompt" class="title display-7">Ethereum Event Log Decoding Task Prompt</h1></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Yield Bearing</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<ol type="1">
-<li><p>new table</p></li>
-<li><p>prompts</p></li>
-<li></li>
-</ol>
-<p>## Context You need to create a new dbt marts model that decodes Ethereum contract event logs with specific topic filters and data field parsing.</p>
-<p>## Key Information to Gather First 1. <strong>Examine existing structure</strong>: Look at current marts models and staging models to understand patterns 2. <strong>Check available macros</strong>: Find hex conversion utilities (hex_to_address, hex_to_numeric, clean_hex_field) 3. <strong>Understand data format</strong>: Ethereum event logs have: - <code>topic0</code>: Event signature hash - <code>topic1</code>, <code>topic2</code>, <code>topic3</code>: Indexed parameters (32 bytes each, padded) - <code>data</code>: Non-indexed parameters (concatenated 32-byte chunks)</p>
-<p>## Critical Data Decoding Rules 1. <strong>Topic decoding</strong>: Use <code>hex_to_address('topicN')</code> for address fields 2. <strong>Data field structure</strong>: - May or may not include <code>0x</code> prefix (check staging model) - Each parameter is exactly 64 hex characters (32 bytes) - Addresses are right-padded in their 64-char segment 3. <strong>Position calculation</strong>: - If data has <code>0x</code> prefix: positions start at 3 (skip “0x”) - Parameter positions: 3-66, 67-130, 131-194, 195-258, etc. - Each parameter is <code>substring(data, start_pos, 64)</code> 4. <strong>Address extraction</strong>: Use <code>hex_to_address("substring(data, pos, 64)")</code> - the macro handles padding 5. <strong>Numeric extraction</strong>: Use <code>hex_to_numeric("substring(data, pos, 64)")</code></p>
-<p>## Validation Approach - Always test with actual example data - Verify each decoded field matches expected output format - Addresses should be 42 chars (0x + 40 hex chars) - Numbers should convert correctly from hex</p>
-<p>## File Structure 1. Create new model in <code>dbt_subprojects/[project]/models/marts/</code> 2. Update <code>schema.yml</code> with model documentation and tests 3. Follow existing naming conventions and patterns</p>
-<p>## Common Pitfalls - Wrong substring positions (remember 0x prefix affects positioning) - Using wrong macro (hex_to_address vs manual string manipulation) - Not accounting for parameter padding in data field - Forgetting to filter by correct topic0 values</p>
-<p>Always verify the decoding with real example data before finalizing.</p>
+    
+  
+    
+  </div>
+  
 
 
+</header>
+
+
+<section id="section" class="level1">
+<h1></h1>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -212,7 +225,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/newgnart\.github\.io\/stables\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
