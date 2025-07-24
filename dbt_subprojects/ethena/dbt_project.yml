@@ -12,4 +12,4 @@ models:
     staging:
       +schema: staging
     marts:
-      +schema: marts
+      +schema: "" # named as ethena_

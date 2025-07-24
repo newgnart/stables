@@ -40,3 +40,42 @@ models:
         description: "Transaction hash"
       - name: transaction_index
         description: "Transaction index"
+  - name: stg_mint_redeem_v2_contract_logs
+    description: "Staged mint/redeem v2 contract log data with extracted topics and standardized format"
+    columns:
+      - name: topic0
+        description: "First topic from the JSON array"
+        tests:
+          - not_null
+      - name: topic1
+        description: "Second topic from the JSON array (if exists)"
+      - name: topic2
+        description: "Third topic from the JSON array (if exists)"
+      - name: topic3
+        description: "Fourth topic from the JSON array (if exists)"
+      - name: topic4
+        description: "Fifth topic from the JSON array (if exists)"
+      - name: contract_address
+        description: "Contract address"
+        tests:
+          - not_null
+      - name: data
+        description: "Log data"
+      - name: block_number
+        description: "Block number"
+        tests:
+          - not_null
+      - name: block_hash
+        description: "Block hash"
+      - name: block_timestamp
+        description: "Block timestamp as timestamp type"
+      - name: gas_price
+        description: "Gas price"
+      - name: gas_used
+        description: "Gas used"
+      - name: log_index
+        description: "Log index"
+      - name: transaction_hash
+        description: "Transaction hash"
+      - name: transaction_index
+        description: "Transaction index"

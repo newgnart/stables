@@ -36,3 +36,101 @@ models:
           - not_null
       - name: log_index
         description: "Position of this log within the transaction"
+
+  - name: usde_mint_redeem_v2_events
+    description: "Mint and redeem events from USDE contract with decoded parameters"
+    columns:
+      - name: chainid
+        description: "Chain ID where the event occurred"
+      - name: contract_address
+        description: "USDE contract address"
+        tests:
+          - not_null
+      - name: block_number
+        description: "Block number where event occurred"
+        tests:
+          - not_null
+      - name: block_hash
+        description: "Block hash"
+      - name: block_timestamp
+        description: "Block timestamp"
+      - name: gas_price
+        description: "Gas price for the transaction"
+      - name: gas_used
+        description: "Gas used by the transaction"
+      - name: log_index
+        description: "Position of this log within the transaction"
+      - name: transaction_hash
+        description: "Transaction hash"
+        tests:
+          - not_null
+      - name: transaction_index
+        description: "Transaction index within the block"
+      - name: event_type
+        description: "Type of event: 'mint' or 'redeem'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['mint', 'redeem']
+      - name: benefactor
+        description: "Address of the benefactor (decoded from topic2)"
+      - name: beneficiary
+        description: "Address of the beneficiary (decoded from topic3)"
+      - name: caller
+        description: "Address that called the mint/redeem function (decoded from data)"
+      - name: collateral_asset
+        description: "Address of the collateral asset (decoded from data)"
+      - name: collateral_amount
+        description: "Amount of collateral involved (decoded from data)"
+      - name: usde_amount
+        description: "Amount of USDE minted or redeemed (decoded from data)"
+
+  - name: usde_mint_redeem_v1_events
+    description: "Mint and redeem events from USDE v1 contract with decoded parameters"
+    columns:
+      - name: chainid
+        description: "Chain ID where the event occurred"
+      - name: contract_address
+        description: "USDE contract address"
+        tests:
+          - not_null
+      - name: block_number
+        description: "Block number where event occurred"
+        tests:
+          - not_null
+      - name: block_hash
+        description: "Block hash"
+      - name: block_timestamp
+        description: "Block timestamp"
+      - name: gas_price
+        description: "Gas price for the transaction"
+      - name: gas_used
+        description: "Gas used by the transaction"
+      - name: log_index
+        description: "Position of this log within the transaction"
+      - name: transaction_hash
+        description: "Transaction hash"
+        tests:
+          - not_null
+      - name: transaction_index
+        description: "Transaction index within the block"
+      - name: event_type
+        description: "Type of event: 'mint' or 'redeem'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['mint', 'redeem']
+      - name: order_id
+        description: "Order ID from topic1 (v1 specific field)"
+      - name: benefactor
+        description: "Address of the benefactor (decoded from topic2)"
+      - name: beneficiary
+        description: "Address of the beneficiary (decoded from topic3)"
+      - name: minter
+        description: "Address of the minter (decoded from data, v1 specific)"
+      - name: collateral_asset
+        description: "Address of the collateral asset (decoded from data)"
+      - name: collateral_amount
+        description: "Amount of collateral involved (decoded from data)"
+      - name: usde_amount
+        description: "Amount of USDE minted or redeemed (decoded from data)"

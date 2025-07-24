@@ -39,7 +39,7 @@ def _create_pipeline(pg_config: PostgresConfig, config: PipelineConfig) -> dlt.P
     """Create a DLT pipeline with PostgreSQL destination."""
     try:
         destination = dlt.destinations.postgres(
-            f"postgresql://{pg_config.username}:{pg_config.password}@{pg_config.host}:{pg_config.port}/{pg_config.database}"
+            f"postgresql://{pg_config.user}:{pg_config.password}@{pg_config.host}:{pg_config.port}/{pg_config.database}"
         )
 
         # Create pipeline with schema settings for nullable columns

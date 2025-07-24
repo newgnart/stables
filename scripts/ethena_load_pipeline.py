@@ -39,8 +39,8 @@ def load_logs(table_schema: str, table_name: str, contract_address: str, chainid
         chainid=chainid,
         contract_address=contract_address,
         start_block=None,
-        # end_block=22_000_000,
-        block_chunk_size=50_000,
+        end_block=19_000_000,
+        block_chunk_size=10_000,
     )
 
 
@@ -91,8 +91,9 @@ if __name__ == "__main__":
     # llama()
     load_logs(
         table_schema="ethena_raw",
-        table_name="mint_redeem_v2_contract_logs",
+        table_name="usde_contract_logs",
         chainid=1,
         # contract_address="0x2CC440b721d2CaFd6D64908D6d8C4aCC57F8Afc3".lower(),
-        contract_address="0xe3490297a08d6fC8Da46Edb7B6142E4F461b62D3".lower(),
+        # contract_address="0xe3490297a08d6fC8Da46Edb7B6142E4F461b62D3".lower(),
+        contract_address="0x4c9edd5852cd905f086c759e8383e09bff1e68b3".lower(),
     )
