@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>TVL</title>
+<title>Ethena Dashboard</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -136,11 +136,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#tvl-by-stablecoins" id="toc-tvl-by-stablecoins" class="nav-link active" data-scroll-target="#tvl-by-stablecoins">TVL by stablecoins</a></li>
+  <li><a href="#tvl" id="toc-tvl" class="nav-link active" data-scroll-target="#tvl">TVL</a>
+  <ul class="collapse">
+  <li><a href="#tvl-by-stablecoins" id="toc-tvl-by-stablecoins" class="nav-link" data-scroll-target="#tvl-by-stablecoins">TVL by stablecoins</a></li>
   <li><a href="#tvl-by-chains" id="toc-tvl-by-chains" class="nav-link" data-scroll-target="#tvl-by-chains">TVL by chains</a></li>
+  </ul></li>
   <li><a href="#usde" id="toc-usde" class="nav-link" data-scroll-target="#usde">USDe</a>
   <ul class="collapse">
-  <li><a href="#tvl" id="toc-tvl" class="nav-link" data-scroll-target="#tvl">TVL</a></li>
+  <li><a href="#tvl-1" id="toc-tvl-1" class="nav-link" data-scroll-target="#tvl-1">TVL</a></li>
   <li><a href="#primary-market" id="toc-primary-market" class="nav-link" data-scroll-target="#primary-market">Primary market</a></li>
   <li><a href="#usde-staking" id="toc-usde-staking" class="nav-link" data-scroll-target="#usde-staking">USDe staking</a></li>
   </ul></li>
@@ -152,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">TVL</h1>
+<h1 class="title">Ethena Dashboard</h1>
 </div>
 
 
@@ -169,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="3ef16ad3" class="cell" data-execution_count="2">
+<div id="3ef16ad3" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json, warnings, os</span>
@@ -188,9 +191,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stables.utils.postgres <span class="im">import</span> get_sqlalchemy_engine</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stables.config <span class="im">import</span> local_pg_config, remote_pg_config</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> get_sqlalchemy_engine(local_pg_config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> get_sqlalchemy_engine(local_pg_config)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.offline <span class="im">as</span> pyo</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>pyo.init_notebook_mode(connected<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+<section id="tvl" class="level2">
+<h2 class="anchored" data-anchor-id="tvl">TVL</h2>
 <section id="tvl-by-stablecoins" class="level3">
 <h3 class="anchored" data-anchor-id="tvl-by-stablecoins">TVL by stablecoins</h3>
 <div id="ae495081" class="cell" data-execution_count="2">
@@ -306,10 +314,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
+</section>
 <section id="usde" class="level2">
 <h2 class="anchored" data-anchor-id="usde">USDe</h2>
-<section id="tvl" class="level3">
-<h3 class="anchored" data-anchor-id="tvl">TVL</h3>
+<section id="tvl-1" class="level3">
+<h3 class="anchored" data-anchor-id="tvl-1">TVL</h3>
 <div id="76aa2791" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
