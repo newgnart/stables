@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Stables research</title>
+<title>ethena</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e8eadc4f84f50986ae4f609da48825be.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-e8eadc4f84f50986ae4f609da48825be.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,6 +100,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -83,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">🏠 Home</span></a>
   </li>  
 </ul>
@@ -97,43 +134,309 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#yield-bearing" id="toc-yield-bearing" class="nav-link active" data-scroll-target="#yield-bearing">Yield Bearing</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Stables research</h1>
+
+
+
+<div id="89d111f6" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> Path.cwd().name <span class="op">==</span> <span class="st">"notebooks"</span> <span class="kw">or</span> Path.cwd().name <span class="op">==</span> <span class="st">"temp"</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    rootdir <span class="op">=</span> Path.cwd().parent</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    rootdir <span class="op">=</span> Path.cwd()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="f30ecc9a" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stables.utils.postgres <span class="im">import</span> get_sqlalchemy_engine</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> stables.config <span class="im">import</span> PostgresConfig</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>db_config <span class="op">=</span> PostgresConfig()</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>engine <span class="op">=</span> get_sqlalchemy_engine(db_config)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="st">SELECT * FROM ethena_marts.usde_erc20_transfers</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span> pd.read_sql(query, engine)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'chainid'</span>, <span class="st">'token_address'</span>, <span class="st">'from_address'</span>, <span class="st">'to_address'</span>, <span class="st">'amount'</span>, <span class="st">'transaction_hash'</span>, <span class="st">'block_timestamp'</span>]</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[cols]</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">chainid</th>
+<th data-quarto-table-cell-role="th">token_address</th>
+<th data-quarto-table-cell-role="th">from_address</th>
+<th data-quarto-table-cell-role="th">to_address</th>
+<th data-quarto-table-cell-role="th">amount_hex</th>
+<th data-quarto-table-cell-role="th">amount</th>
+<th data-quarto-table-cell-role="th">block_number</th>
+<th data-quarto-table-cell-role="th">block_hash</th>
+<th data-quarto-table-cell-role="th">block_timestamp</th>
+<th data-quarto-table-cell-role="th">gas_price</th>
+<th data-quarto-table-cell-role="th">gas_used</th>
+<th data-quarto-table-cell-role="th">log_index</th>
+<th data-quarto-table-cell-role="th">transaction_hash</th>
+<th data-quarto-table-cell-role="th">transaction_index</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>4aced204071b638000</td>
+<td>1379.96204</td>
+<td>18613178</td>
+<td>0x764dda6f921b7b891dd14678220349c967e414a7bccf...</td>
+<td>2023-11-20 13:03:59+00:00</td>
+<td>29470248656</td>
+<td>208883</td>
+<td>140.0</td>
+<td>0xfa74c2ca3efd79b9adcc7ac69cd30be3f6f94f1043c4...</td>
+<td>181.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>4b015541087dc04000</td>
+<td>1383.60186</td>
+<td>18613223</td>
+<td>0x8430db63e4cd5d8b88a526b558adf6ad71430ddf8bb3...</td>
+<td>2023-11-20 13:13:11+00:00</td>
+<td>26270170948</td>
+<td>174683</td>
+<td>153.0</td>
+<td>0x0dc4a16e5a55dc5603a7b75f2476677ab5205f75f889...</td>
+<td>99.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>4b08b2929628b52000</td>
+<td>1384.13253</td>
+<td>18613235</td>
+<td>0x405a6b4fbfc2cc7c1876e0a002e91c60b6f1ff92bae8...</td>
+<td>2023-11-20 13:15:35+00:00</td>
+<td>27625475068</td>
+<td>174683</td>
+<td>241.0</td>
+<td>0xa4a4e7fcc71b656c1fd4cdc4d4a816813d69fb0f8e61...</td>
+<td>81.0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>4b1752112760896000</td>
+<td>1385.18623</td>
+<td>18613260</td>
+<td>0x5af1f95de7b6bba8390f6de46fb1b9235bc2f0e00bf7...</td>
+<td>2023-11-20 13:20:35+00:00</td>
+<td>23588296908</td>
+<td>174683</td>
+<td>375.0</td>
+<td>0x3fd897ce32c014c68b762171430620832def551630aa...</td>
+<td>137.0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>4b1476eb24e9c2e000</td>
+<td>1384.98043</td>
+<td>18613264</td>
+<td>0xf756900de5eb6d5afe01f56f397850e9768dc0bf674c...</td>
+<td>2023-11-20 13:21:23+00:00</td>
+<td>23021666132</td>
+<td>174683</td>
+<td>436.0</td>
+<td>0xea489b7f9bb936722301c48537572e7df756b47c59d8...</td>
+<td>161.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="fd984286" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">chainid</th>
+<th data-quarto-table-cell-role="th">token_address</th>
+<th data-quarto-table-cell-role="th">from_address</th>
+<th data-quarto-table-cell-role="th">to_address</th>
+<th data-quarto-table-cell-role="th">amount</th>
+<th data-quarto-table-cell-role="th">transaction_hash</th>
+<th data-quarto-table-cell-role="th">block_timestamp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>1379.962040</td>
+<td>0xfa74c2ca3efd79b9adcc7ac69cd30be3f6f94f1043c4...</td>
+<td>2023-11-20 13:03:59+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>1383.601860</td>
+<td>0x0dc4a16e5a55dc5603a7b75f2476677ab5205f75f889...</td>
+<td>2023-11-20 13:13:11+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>1384.132530</td>
+<td>0xa4a4e7fcc71b656c1fd4cdc4d4a816813d69fb0f8e61...</td>
+<td>2023-11-20 13:15:35+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>1385.186230</td>
+<td>0x3fd897ce32c014c68b762171430620832def551630aa...</td>
+<td>2023-11-20 13:20:35+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x0000000000000000000000000000000000000000</td>
+<td>0x3fcdebcaf5b31efbe8b10b161ac0fe9a1d359aa5</td>
+<td>1384.980430</td>
+<td>0xea489b7f9bb936722301c48537572e7df756b47c59d8...</td>
+<td>2023-11-20 13:21:23+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">146514</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0xd75f047640a973f8feb6786d9ded055ded637946</td>
+<td>0x1ab3d612ea7df26117554dddd379764ebce1a5ad</td>
+<td>3111.843180</td>
+<td>0xa327222a98f3e996014ae2a08a8855071e3c315eb9e4...</td>
+<td>2024-03-25 07:24:11+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">146515</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x02950460e2b9529d0e00284a5fa2d7bdf3fa4d72</td>
+<td>0x710bb47414db67482bd3fc86e2463fe400c395de</td>
+<td>8372.917981</td>
+<td>0x49c4376b10a70cd24eaaf0822dca6ac37c8ef01c95e0...</td>
+<td>2024-03-25 07:24:11+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">146516</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0xc856837ce657dc00ab70f2f8142a8a20b29f2856</td>
+<td>0x9d39a5de30e57443bff2a8307a4256c8797a3497</td>
+<td>10.986471</td>
+<td>0xcb921b391de29a743fec5dd8bf19e920c6d73e69ac4f...</td>
+<td>2024-03-25 07:24:11+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">146517</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0xe070f56e6d73d63dc671b006c46e1323a89879a1</td>
+<td>0x8707f238936c12c309bfc2b9959c35828acfc512</td>
+<td>10.000000</td>
+<td>0x59265cbd6713e8e2cef7b29c45116e2f437b66c2323a...</td>
+<td>2024-03-25 07:24:23+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">146518</td>
+<td>1</td>
+<td>0x4c9edd5852cd905f086c759e8383e09bff1e68b3</td>
+<td>0x02950460e2b9529d0e00284a5fa2d7bdf3fa4d72</td>
+<td>0xde5471166523e657d54a50126013daa6daf8dad4</td>
+<td>1497.790572</td>
+<td>0xdc3e22bcf88f66eae496eb961f616d95610408d1891b...</td>
+<td>2024-03-25 07:24:35+00:00</td>
+</tr>
+</tbody>
+</table>
+
+<p>146519 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<div id="e45bbf36" class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create daily aggregation with mint and burn amountsdf['date'] = df['block_timestamp'].dt.datezero_address = '0x0000000000000000000000000000000000000000'# Calculate daily mints (from zero address)daily_mints = df[df['from_address'] == zero_address].groupby('date')['amount'].sum()# Calculate daily burns (to zero address) daily_burns = df[df['to_address'] == zero_address].groupby('date')['amount'].sum()# Calculate total daily transfer volumedaily_total = df.groupby('date')['amount'].sum()# Combine into single dataframedaily_agg = pd.DataFrame({    'mint_amount': daily_mints,    'burn_amount': daily_burns,    'total_amount': daily_total}).fillna(0).round(2).reset_index()print(f"Daily aggregation shape: {daily_agg.shape}")daily_agg.head(10)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="yield-bearing" class="level2">
-<h2 class="anchored" data-anchor-id="yield-bearing">Yield Bearing</h2>
-<p><a href="yield_bearing.html">Dashboard</a></p>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
