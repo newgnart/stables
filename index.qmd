@@ -1,0 +1,6 @@
+---
+title: "Stables research"
+---
+
+## Yield Bearing
+[Dashboard](yield_bearing.html)
