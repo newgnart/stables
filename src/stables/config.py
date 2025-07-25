@@ -1,4 +1,5 @@
 import os
+import json
 from typing import Any, Dict
 
 from dotenv import load_dotenv
@@ -90,3 +91,8 @@ remote_pg_config = PostgresConfig(
     user=os.getenv("REMOTE_POSTGRES_USER"),
     password=os.getenv("REMOTE_POSTGRES_PASSWORD"),
 )
+
+with open(
+    os.path.join(os.path.dirname(__file__), "address", "ybs_tokens.json"), "r"
+) as f:
+    ybs_tokens = json.load(f)

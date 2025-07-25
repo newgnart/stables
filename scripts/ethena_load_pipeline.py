@@ -50,7 +50,7 @@ def llama():
 
     # llama
     ## 1. stables metadata ✅
-    load_stables_metadata(pg_config)
+    # load_stables_metadata(pg_config)
 
     ## 2. circulating ✅
     ## load historical first time
@@ -58,8 +58,8 @@ def llama():
     # load_stable_circulating(id=221, pg_config=pg_config, get_response="chainBalances")
 
     ### next times just get currentChainBalances
-    load_stable_circulating(id=146, pg_config=pg_config)
-    load_stable_circulating(id=221, pg_config=pg_config)
+    # load_stable_circulating(id=146, pg_config=pg_config)
+    # load_stable_circulating(id=221, pg_config=pg_config)
 
     # # # 3. token price ✅
     network = "ethereum"
@@ -67,33 +67,34 @@ def llama():
     # # ### First time load with default params {"span": 1000, "period": "1d"}
     # # load_token_price(network, contract_address, pg_config)  # 477
     # # ### Next time with smaller span, 10 would overlap but fine
-    load_token_price(
-        network, contract_address, pg_config, params={"span": 10, "period": "1d"}
-    )
+    # load_token_price(
+    #     network, contract_address, pg_config, params={"span": 10, "period": "1d"}
+    # )
 
     # # # # 4. protocol revenue ✅
     # # # both first time and ongoing use same params, merge with primary_key will take care
-    load_protocol_revenue(protocol="ethena", pg_config=pg_config)
+    # load_protocol_revenue(protocol="ethena", pg_config=pg_config)
 
     # # ## 5. all yield_pools ✅
-    load_all_yield_pools(pg_config=pg_config)
+    # load_all_yield_pools(pg_config=pg_config)
 
     # # 6. yield
     # # susde_staking_pool_defillama_id = "66985a81-9c51-46ca-9977-42b4fe7bc6df"
     load_yield_pool(
-        pool_id="66985a81-9c51-46ca-9977-42b4fe7bc6df",
-        pool_name="susde",
+        # pool_id="66985a81-9c51-46ca-9977-42b4fe7bc6df",
+        pool_id='13392973-be6e-4b2f-bce9-4f7dd53d1c3a',
+        pool_name="sdai",
         pg_config=pg_config,
     )
 
 
 if __name__ == "__main__":
-    # llama()
-    load_logs(
-        table_schema="ethena_raw",
-        table_name="usde_contract_logs",
-        chainid=1,
-        # contract_address="0x2CC440b721d2CaFd6D64908D6d8C4aCC57F8Afc3".lower(),
-        # contract_address="0xe3490297a08d6fC8Da46Edb7B6142E4F461b62D3".lower(),
-        contract_address="0x4c9edd5852cd905f086c759e8383e09bff1e68b3".lower(),
-    )
+    llama()
+    # load_logs(
+    #     table_schema="ethena_raw",
+    #     table_name="usde_contract_logs",
+    #     chainid=1,
+    #     # contract_address="0x2CC440b721d2CaFd6D64908D6d8C4aCC57F8Afc3".lower(),
+    #     # contract_address="0xe3490297a08d6fC8Da46Edb7B6142E4F461b62D3".lower(),
+    #     contract_address="0x4c9edd5852cd905f086c759e8383e09bff1e68b3".lower(),
+    # )
