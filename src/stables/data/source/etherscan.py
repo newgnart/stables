@@ -235,3 +235,39 @@ def get_contract_creation_txn(chainid, contract_addresses):
     if len(result) == 1:
         return result[0]
     return result
+
+
+def get_transaction_receipt(chainid, txhash):
+    """
+    Gets the transaction receipt for a given transaction hash.
+
+    Args:
+        chainid: The chain ID (1 for Ethereum mainnet).
+        txhash: The transaction hash (with or without 0x prefix).
+
+    Returns:
+        dict: The transaction receipt containing gas used, logs, status, etc.
+
+    Raises:
+        Exception: If the API returns an error or transaction not found.
+    """
+    # Ensure txhash has 0x prefix
+    if not txhash.startswith("0x"):
+        txhash = "0x" + txhash
+
+    logger.info(f"Getting transaction receipt for {txhash} on chain {chainid}")
+
+    params = {
+        "chainid": chainid,
+        "module": "proxy",
+        "action": "eth_getTransactionReceipt",
+        "txhash": txhash,
+    }
+    
+    result = _etherscan_v2_call(params)
+    
+    if result is None:
+        raise Exception(f"Transaction receipt not found for {txhash}")
+    
+    logger.info(f"Retrieved transaction receipt for {txhash}")
+    return result
